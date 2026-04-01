@@ -87,50 +87,60 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231a1a2e" width="1200" height="600"/><circle fill="%23ff6b35" opacity="0.3" cx="200" cy="150" r="80"/><circle fill="%230f3460" opacity="0.4" cx="1000" cy="400" r="120"/><path fill="%23ff6b35" opacity="0.2" d="M300 500 Q600 400 900 500 T1200 450"/></svg>');
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: rgb(130, 122, 122);
-        }
+       /* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire section */
+    z-index: -1; /* Ensures the video stays behind the content */
+}
 
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: rgb(130, 122, 122);
+}
 
-        .cta-button {
-            display: inline-block;
-            background: #ff6b35;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
-            border: none;
-            cursor: pointer;
-        }
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,107,53,0.6);
-        }
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
 
+.cta-button {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255,107,53,0.6);
+}
         /* Sections */
         .container {
             max-width: 1200px;
@@ -413,12 +423,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steel Titans FTC Team 28021</title>
-
-    <!-- ✅ PUT IT RIGHT HERE -->
     <link rel="icon" type="image/png" href="team-logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <body>
-
     <!-- Header -->
     <header>
         <nav>
@@ -441,16 +448,20 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="team-logo.png" alt="Logo" style="height:300px; margin-bottom:1rem;">
-            <h1>Steel Titans</h1>
-            <p>FTC Team 28021 | Forging the Future of Robotics</p>
-            <a href="#about" class="cta-button">Discover Our Team</a>
-        </div>
-    </section>
-
+   <!-- Hero Section -->
+<section id="home" class="hero">
+    <video autoplay muted loop id="background-video">
+        <source src="Steel Titans 2.14.26.mp4" type="video/mp4">
+        <!-- Fallback for unsupported browsers -->
+        Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+        <img src="team-logo.png" alt="Logo" style="height:300px; margin-bottom:1rem;">
+        <h1>Steel Titans</h1>
+        <p>FTC Team 28021 | Forging the Future of Robotics</p>
+        <a href="#about" class="cta-button">Discover Our Team</a>
+    </div>
+</section>
     <!-- About Section -->
     <section id="about" class="container">
         <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
