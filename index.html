@@ -12,16 +12,21 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            padding-top: 80px;
         }
 
         /* Header */
         header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
+            color: rgb(133, 129, 129);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -65,7 +70,7 @@
         }
 
         .nav-links a:hover {
-            color: #ff6b35;
+            color: #f6f1f0;
         }
 
         .hamburger {
@@ -117,6 +122,8 @@
             font-size: 1.2rem;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -147,12 +154,11 @@
             margin-right: 1rem;
         }
 
-        /* About */
+        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .about-card {
@@ -174,29 +180,29 @@
             margin-bottom: 1rem;
         }
 
-        /* Awards Cards */
-.award-card {
-    background: linear-gradient(135deg, #ff6b35, #f7931e); /* custom gradient */
-    color: white;
-    padding: 2.5rem 2rem; /* slightly bigger padding than About cards */
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(235, 224, 5, 0.2);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    min-height: 200px; /* consistent size */
-}
+        /* Awards Section */
+        .award-card {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(235, 224, 5, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-height: 200px;
+        }
 
-.award-card i {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
+        .award-card i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
 
-.award-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
-}
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+        }
 
-        /* Team */
+        /* Team Section */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -226,43 +232,88 @@
             text-align: center;
         }
 
-        /* Gallery */
+        .stem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.stem-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.stem-card:hover {
+    transform: translateY(-10px);
+}
+
+.stem-card i {
+    font-size: 3rem;
+    color: #ff6b35;
+    margin-bottom: 1rem;
+}
+
+.stem-card h3 {
+    margin-bottom: 1rem;
+    color: #1a1a2e;
+}
+        /* Gallery Section */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-        .gallery-item:hover {
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
             transform: scale(1.05);
         }
 
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255,107,53,0.8);
-            opacity: 0;
-            transition: opacity 0.3s;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
         }
 
-        .gallery-item:hover::before {
-            opacity: 1;
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
         }
 
-        /* Contact */
+        /* Contact Section */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            margin-top: 3rem;
         }
 
         .contact-info h3 {
@@ -280,6 +331,10 @@
             color: #ff6b35;
             width: 30px;
             font-size: 1.2rem;
+        }
+
+        .contact-item span {
+            margin-left: 10px;
         }
 
         .contact-form {
@@ -334,8 +389,11 @@
             color: #ff6b35;
         }
 
-        /* Mobile */
+        /* Responsive */
         @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
             .hamburger { display: flex; }
             .nav-links { 
                 display: none;
@@ -348,19 +406,7 @@
                 padding: 1rem;
             }
             .nav-links.active { display: flex; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.2rem; }
-            h2 { font-size: 2rem; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .container { padding: 2rem 1rem; }
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
     </style>
 </head>
 <body>
@@ -368,10 +414,10 @@
     <!-- Header -->
     <header>
         <nav>
-           <div class="logo">
-    <img src="team-logo.png" alt="Logo" style="height:40px;">
-    Steel Titans FTC 28021
-</div>
+            <div class="logo">
+                <img src="team-logo.png" alt="Logo" style="height:40px;">
+                Steel Titans FTC 28021
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -389,11 +435,11 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content fade-in-up">
-    <img src="team-logo.png" alt="Logo" style="height:120px; margin-bottom:1rem;">
-    <h1>Steel Titans</h1>
+        <div class="hero-content">
+            <img src="team-logo.png" alt="Logo" style="height:120px; margin-bottom:1rem;">
+            <h1>Steel Titans</h1>
             <p>FTC Team 28021 | Forging the Future of Robotics</p>
-            <a href="#about" class="cta-button">Discover Our Team</a
+            <a href="#about" class="cta-button">Discover Our Team</a>
         </div>
     </section>
 
@@ -401,7 +447,7 @@
     <section id="about" class="container">
         <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
         <div class="about-grid">
-            <div class="about-card fade-in-up">
+            <div class="about-card">
                 <i class="fas fa-trophy"></i>
                 <h3>Our Journey</h3>
                 <p>The Steel Titans started their rookie season in 2024 at Claremont International High School. Since then, our team has been dedicated to building, programming, and competing with innovative robots in FTC competitions. We believe in teamwork, learning by doing, and inspiring creativity through engineering.</p>
@@ -409,43 +455,42 @@
         </div>
     </section>
 
+    <!-- Awards Section -->
+    <section id="awards" class="container">
+        <h2><i class="fas fa-award"></i>Awards & Achievements (2025–2026 Season)</h2>
+        <div class="about-grid">
+            <div class="award-card">
+                <i class="fas fa-trophy"></i>
+                <h3>NYC Qualifier 1</h3>
+                <p>Connect Award – 2nd Place</p>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-medal"></i>
+                <h3>NYC Qualifier 4</h3>
+                <p>Innovate Award sponsored by RTX</p>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-certificate"></i>
+                <h3>NYC Qualifier 11</h3>
+                <p>Control Award<br>Winning Alliance – 1st Team Selected</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Awards Section -->
-<section id="awards" class="container">
-    <h2><i class="fas fa-award"></i>Awards & Achievements (2025–2026 Season)</h2>
-    <div class="about-grid">
-        <div class="award-card fade-in-up">
-            <i class="fas fa-trophy"></i>
-            <h3>NYC Qualifier 1</h3>
-            <p>Connect Award – 2nd Place</p>
-        </div>
-        <div class="award-card fade-in-up">
-            <i class="fas fa-medal"></i>
-            <h3>NYC Qualifier 4</h3>
-            <p>Innovate Award sponsored by RTX</p>
-        </div>
-        <div class="award-card fade-in-up">
-            <i class="fas fa-certificate"></i>
-            <h3>NYC Qualifier 11</h3>
-            <p>Control Award<br>Winning Alliance – 1st Team Selected</p>
-        </div>
-    </div>
-</section>
-
-    <!-- Sub Teams Section -->
+    <!-- Team Section -->
     <section id="team" class="container" style="background: #f8f9fa;">
         <h2><i class="fas fa-user-friends"></i>Sub Teams</h2>
         <div class="team-grid">
-            <div class="team-member fade-in-up">
+            <div class="team-member">
                 <div style="background: linear-gradient(45deg, #ff6b35, #f7931e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-user" style="font-size: 4rem;"></i>
+                    <i class="fas fa-pencil-alt" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
                     <h3>Design Team</h3>
-                    <p>Design</p>
+                    <p>Designing</p>
                 </div>
             </div>
-            <div class="team-member fade-in-up">
+            <div class="team-member">
                 <div style="background: linear-gradient(45deg, #0f3460, #1a1a2e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-code" style="font-size: 4rem;"></i>
                 </div>
@@ -454,7 +499,7 @@
                     <p>Software & Autonomous</p>
                 </div>
             </div>
-            <div class="team-member fade-in-up">
+            <div class="team-member">
                 <div style="background: linear-gradient(45deg, #ff6b35, #e55a2b); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-wrench" style="font-size: 4rem;"></i>
                 </div>
@@ -463,7 +508,7 @@
                     <p>Mechanical Design</p>
                 </div>
             </div>
-            <div class="team-member fade-in-up">
+            <div class="team-member">
                 <div style="background: linear-gradient(45deg, #16213e, #0f3460); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-cogs" style="font-size: 4rem;"></i>
                 </div>
@@ -472,79 +517,135 @@
                     <p>Wiring & Electronics</p>
                 </div>
             </div>
+             <div class="team-member">
+                <div style="background: linear-gradient(45deg, #ff6b35, #e55a2b); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <i class="fas fa-handshake" style="font-size: 4rem;"></i>
+                </div>
+                <div class="team-info">
+                    <h3>Outreach Team</h3>
+                    <p>Community Engagement</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section id="stem-connections" class="container" style="background: #f8f9fa;">
+    <h2><i class="fas fa-robot"></i>STEM Connections</h2>
+    <div class="stem-grid">
+        <div class="stem-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Workshops</h3>
+            <p>We host STEM workshops at local schools and community events to inspire the next generation of engineers and innovators.</p>
+        </div>
+        <div class="stem-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Partnerships</h3>
+            <p>Our team collaborates with other robotics teams, organizations, and universities to expand STEM learning opportunities.</p>
+        </div>
+        <div class="stem-card">
+            <i class="fas fa-users"></i>
+            <h3>Mentorship</h3>
+            <p>Steel Titans members mentor students interested in robotics, coding, and engineering competitions.</p>
+        </div>
+    </div>
+</section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="container">
         <h2><i class="fas fa-images"></i>Gallery</h2>
-       <div class="gallery-grid">
-    <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_8448.jpg" alt="Gallery Image"></div>
-    <div class="gallery-item"><img src="IMG_8367.jpg" alt="Gallery Image"></div>
-</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9627.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
+        </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Full Image">
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="container" style="background: #f8f9fa;">
         <h2><i class="fas fa-envelope"></i>Contact Us</h2>
         <div class="contact-grid">
-            <div class="contact-info fade-in-up">
-                <h3>Get In Touch</h3>
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <span>steel-titans-28021@claremontihs.org</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Claremont International High School<br>City, State</span>
+                    <span>Claremont International High School</span>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-globe"></i>
-                    <span>FTC Team 28021<br>Steel Titans</span>
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/steel_titans_28021/" target="_blank">steel_titans_28021</a>
                 </div>
             </div>
-            <div class="contact-form fade-in-up">
-                <form>
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="5" placeholder="Your Message..." required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%; border: none;">Send Message</button>
-                </form>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mykbjraj" method="POST">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="cta-button">Send Message</button>
+</form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Steel Titans FTC Team 28021. Forging the Future.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+        <p>&copy;  Steel Titans FTC Team 28021. </p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
+        // Hamburger menu toggle
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = item.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
         }
     </script>
 </body>
