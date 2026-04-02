@@ -192,15 +192,21 @@
 
         /* Awards Section */
         .award-card {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 12px 35px rgba(235, 224, 5, 0.2);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            min-height: 200px;
-        }
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    height: 250px;             
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center;       
+    
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s;
+}
 
         .award-card i {
             font-size: 3.5rem;
@@ -211,6 +217,15 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 45px rgba(0,0,0,0.3);
         }
+        .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.award-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
 
         /* Team Section */
         .team-grid {
@@ -477,7 +492,7 @@
     <!-- Awards Section -->
     <section id="awards" class="container">
         <h2><i class="fas fa-award"></i>Awards & Achievements (2025–2026 Season)</h2>
-        <div class="about-grid">
+        <div class="awards-grid">
             <div class="award-card">
                 <i class="fas fa-trophy"></i>
                 <h3>NYC Qualifier 1</h3>
