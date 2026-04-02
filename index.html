@@ -257,34 +257,40 @@
             text-align: center;
         }
 
-        .stem-grid {
+       /* STEM Connections Section - Bigger Blocks */
+.stem-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* wider min width */
+    gap: 2.5rem; /* more space between blocks */
 }
-
-.stem-card {
+ .stem-card {
     background: white;
     border-radius: 15px;
-    padding: 2rem;
+    padding: 4rem;           /* increase padding for more vertical space */
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     transition: transform 0.3s;
-}
-
-.stem-card:hover {
-    transform: translateY(-10px);
+    min-height: 500px;       /* increase height from 350px to 500px or more */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .stem-card i {
-    font-size: 3rem;
+    font-size: 4rem;
     color: #ff6b35;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .stem-card h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: #1a1a2e;
+    font-size: 1.5rem;
+}
+
+.stem-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
         /* Gallery Section */
         .gallery-grid {
@@ -448,13 +454,15 @@
                 <img src="team-logo.png" alt="Logo" style="height:40px;">
                 Steel Titans FTC 28021
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+           <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#team">Sub_Teams</a></li>
+    <li><a href="#stem-connections">Connects</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -494,7 +502,7 @@
         <h2><i class="fas fa-award"></i>Awards & Achievements (2025–2026 Season)</h2>
         <div class="awards-grid">
             <div class="award-card">
-                <i class="fas fa-handshake"></i>
+                <i class="fas fa-network-wired"></i>
                 <h3>NYC Qualifier 1</h3>
                 <p>Connect Award – 2nd Place</p>
             </div>
@@ -516,7 +524,7 @@
 </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Sub_Team Section -->
     <section id="team" class="container" style="background: #f8f9fa;">
         <h2><i class="fas fa-user-friends"></i>Sub Teams</h2>
         <div class="team-grid">
@@ -569,21 +577,26 @@
     </section>
 
     <section id="stem-connections" class="container" style="background: #f8f9fa;">
-    <h2><i class="fas fa-robot"></i>STEM Connections</h2>
+    <h2><i class="fas fa-robot"></i>Connections</h2>
     <div class="stem-grid">
         <div class="stem-card">
             <i class="fas fa-lightbulb"></i>
-            <h3>Workshops</h3>
+            <h3>Stem connections</h3>
             <p>We host STEM workshops at local schools and community events to inspire the next generation of engineers and innovators.</p>
         </div>
         <div class="stem-card">
             <i class="fas fa-network-wired"></i>
-            <h3>Partnerships</h3>
+            <h3>Partnerships & Sponsorships</h3>
             <p>Our team collaborates with other robotics teams, organizations, and universities to expand STEM learning opportunities.</p>
         </div>
         <div class="stem-card">
-            <i class="fas fa-users"></i>
-            <h3>Mentorship</h3>
+            <i class="fas fa-user-friends"></i>
+            <h3>Mentorship & Support</h3>
+            <p>Steel Titans members mentor students interested in robotics, coding, and engineering competitions.</p>
+        </div>
+        <div class="stem-card">
+            <i class="fas fa-cogs"></i>
+            <h3>Collaboration with FTC teams</h3>
             <p>Steel Titans members mentor students interested in robotics, coding, and engineering competitions.</p>
         </div>
     </div>
@@ -606,6 +619,22 @@
             <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image"></div>
             <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image"></div>
             <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.35.59 AM.png" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.22 AM.png" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.38 AM.png" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.50 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.37.07 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.38.51 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.04 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.19 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.40.03 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.51.08 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.17 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.55 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.11 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.28 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.48 AM.png" alt="Gallery Image"></div>
+             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.56.30 AM.png" alt="Gallery Image"></div>
         </div>
     </section>
 
