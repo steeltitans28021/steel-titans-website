@@ -125,32 +125,32 @@
 
 .cta-button {
     display: inline-block;
-    background: #ff6b35;
+    background: #50504f;
     color: white;
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1.2rem;
     transition: all 0.3s;
-    box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+    box-shadow: 0 5px 15px rgba(248, 232, 226, 0.4);
     border: none;
     cursor: pointer;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255,107,53,0.6);
+    box-shadow: 0 8px 25px rgba(247, 209, 196, 0.6);
 }
         /* Sections */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
 
-        section {
-            padding: 5rem 0;
-        }
+      section {
+    padding: 2rem 2rem;
+}
 
         h2 {
             font-size: 3rem;
@@ -160,7 +160,7 @@
         }
 
         h2 i {
-            color: #5035ff;
+            color: #1b1b1c;
             margin-right: 1rem;
         }
 
@@ -186,14 +186,14 @@
 
         .about-card i {
             font-size: 3rem;
-            color: #ff6b35;
+            color: #857d7d;
             margin-bottom: 1rem;
         }
 
         /* Awards Section */
         .award-card {
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
-    color: white;
+    background: linear-gradient(135deg, #cac7c6, #4e4c4c);
+    color: rgb(23, 23, 23);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     
@@ -259,19 +259,20 @@
 
        /* STEM Connections Section - Bigger Blocks */
 .stem-grid {
-     display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
 }
+
  .stem-card {
-    background: rgb(6, 233, 188);
+    background: rgb(145, 148, 147);
     border-radius: 15px;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s;
-    min-height: 500px;       
+      
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -279,13 +280,13 @@
 
 .stem-card i {
     font-size: 4rem;
-    color: #ff6b35;
+    color: #f2ebe9;
     margin-bottom: 1.5rem;
 }
 
 .stem-card h3 {
     margin-bottom: 1.2rem;
-    color: #1a1a2e;
+    color: #101011;
     font-size: 1.5rem;
 }
 
@@ -298,14 +299,69 @@
   padding-top: 20px;
 }
 
-.ftc-logo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  height: 80px;
-  width: auto;
+.stem-card p strong {
+    color: #1a1a2e;
 }
-/* Members Section */
+.stem-card h3 {
+    margin-bottom: 0px;
+}
+
+.stem-card p {
+    margin-top: 0px;
+}
+
+.stem-card,
+
+.partnerships-card {
+    margin-top: 3rem;
+}
+
+/* Mentorship Section - Grid Layout (Logo on Top) */
+.mentorship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+}
+
+.mentorship-card {
+    display: flex;
+    flex-direction: column; /* Keeps logo on top */
+    align-items: center;
+    gap: 1rem;
+
+    background: #919493;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    transition: transform 0.3s;
+}
+
+.mentorship-card:hover {
+    transform: translateY(-5px);
+}
+
+.mentorship-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Ensures logo is not stretched */
+}
+
+.mentorship-card-content {
+    text-align: center; /* Centers text content */
+}
+
+.mentorship-card h3 {
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.mentorship-card p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Team Members Section */
 .members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -339,7 +395,7 @@
 }
 
 .member-info p {
-    color: #ff6b35;
+    color: #5a5857;
     font-weight: bold;
 }
 /* Mentors Section */
@@ -350,13 +406,13 @@
 }
 
 .mentor-card {
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: transform 0.3s;
     text-align: center;
-    border-top: 5px solid #ff6b35; /* makes them stand out */
+    border-top: 5px solid #737170;
 }
 
 .mentor-card:hover {
@@ -381,8 +437,52 @@
 }
 
 .mentor-info p {
-    color: #5035ff;
+    color: #8b8b8e;
     font-weight: bold;
+}
+/* Partnerships Section - Logo on top layout */
+.partnerships-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.partnership-card {
+    display: flex;
+    flex-direction: column; /* changed to vertical layout */
+    align-items: center;
+    gap: 1.5rem;
+
+    background: #919493;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    transition: transform 0.3s;
+}
+
+.partnership-card:hover {
+    transform: translateY(-5px);
+}
+
+.partnership-card img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.partnership-card-content {
+    text-align: center;
+}
+
+.partnership-card h3 {
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.partnership-card p {
+    margin: 0;
+    line-height: 1.5;
 }
         /* Gallery Section */
         .gallery-grid {
@@ -517,7 +617,7 @@
         }
 
         .social-links a:hover {
-            color: #ff6b35;
+            color: #beb6b3;
         }
 
         /* Responsive */
@@ -538,12 +638,23 @@
             }
             .nav-links.active { display: flex; }
         };
+        @media (max-width: 1000px) {
+    .collab-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .collab-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steel Titans FTC Team 28021</title>
+    <title>STEEL TITANS FTC Team 28021</title>
     <link rel="icon" type="image/png" href="team-logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <body>
@@ -552,13 +663,13 @@
         <nav>
             <div class="logo">
                 <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Logo" style="height:40px;">
-                Steel Titans FTC 28021
+              STEEL TITANS FTC 28021
             </div>
            <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#awards">Awards</a></li>
-    <li><a href="#team">Sub_Teams</a></li>
+    <li><a href="#team">Subteams</a></li>
     <li><a href="#members">Members</a></li>  
     <li><a href="#mentors">Mentors</a></li>   
     <li><a href="#stem-connections">Connects</a></li>
@@ -576,20 +687,20 @@
    <!-- Hero Section -->
 <section id="home" class="hero">
     <video autoplay muted loop id="background-video">
-        <source src="Steel Titans 2.14.26.mp4" type="video/mp4">
+        <source src="vedios/Steel Titans 2.14.26.mp4" type="video/mp4">
         <!-- Fallback for unsupported browsers -->
         Your browser does not support the video tag.
     </video>
     <div class="hero-content">
         <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Logo" style="height:300px; margin-bottom:1rem;">
-        <h1>Steel Titans</h1>
-        <p>FTC Team 28021 | Forging the Future of Robotics</p>
+        <h1>STEEL TITANS</h1>
+        <p>FTC TEAM 28021 | Forging the Future of Robotics</p>
         <a href="#about" class="cta-button">Discover Our Team</a>
     </div>
 </section>
     <!-- About Section -->
     <section id="about" class="container">
-        <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
+        <h2><i class="fas fa-info-circle"></i>About STEEL TITANS</h2>
         <div class="about-grid">
             <div class="about-card">
                 <i class="fas fa-trophy"></i>
@@ -634,10 +745,10 @@ Our hard work and perseverance have already led to strong results—we are curre
 
     <!-- Sub_Team Section -->
     <section id="team" class="container" style="background: #f8f9fa;">
-        <h2><i class="fas fa-user-friends"></i>Sub Teams</h2>
+        <h2><i class="fas fa-user-friends"></i>Subteams</h2>
         <div class="team-grid">
             <div class="team-member">
-                <div style="background: linear-gradient(45deg, #ff6b35, #f7931e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                <div style="background: linear-gradient(45deg,  #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-pencil-alt" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
@@ -646,7 +757,7 @@ Our hard work and perseverance have already led to strong results—we are curre
                 </div>
             </div>
             <div class="team-member">
-                <div style="background: linear-gradient(45deg, #0f3460, #1a1a2e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                <div style="background: linear-gradient(45deg, #111212, #1a1a2e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-code" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
@@ -655,7 +766,7 @@ Our hard work and perseverance have already led to strong results—we are curre
                 </div>
             </div>
             <div class="team-member">
-                <div style="background: linear-gradient(45deg, #ff6b35, #e55a2b); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                <div style="background: linear-gradient(45deg,  #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-wrench" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
@@ -664,7 +775,7 @@ Our hard work and perseverance have already led to strong results—we are curre
                 </div>
             </div>
             <div class="team-member">
-                <div style="background: linear-gradient(45deg, #16213e, #0f3460); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                <div style="background: linear-gradient(45deg, #111112, #101010); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-cogs" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
@@ -673,7 +784,7 @@ Our hard work and perseverance have already led to strong results—we are curre
                 </div>
             </div>
              <div class="team-member">
-                <div style="background: linear-gradient(45deg, #ff6b35, #e55a2b); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
+                <div style="background: linear-gradient(45deg, #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
                     <i class="fas fa-handshake" style="font-size: 4rem;"></i>
                 </div>
                 <div class="team-info">
@@ -689,10 +800,7 @@ Our hard work and perseverance have already led to strong results—we are curre
     <h2><i class="fas fa-users"></i>Team members</h2>
     <div class="members-grid">
 
-        <!-- Row of Members -->
-        <!-- Just replace names + images -->
-
-        <div class="member-card"><img src="islam.png"><div class="member-info"><h3>MD Islam</h3><p>Programming & Outreach team <p>(team captain)</p></div></div>
+        <div class="member-card"><img src="islam.png"><div class="member-info"><h3>MD Islam</h3><p>Programming & Outreach team <p>(TEAM CAPTAIN)</p></div></div>
         <div class="member-card"><img src="abid2.png"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical & Electrical Team </p></div></div>
         <div class="member-card"><img src="ariel.png"><div class="member-info"><h3>Ariel Ubri </h3><p>Design Team</p></div></div>
         <div class="member-card"><img src="tamim2.png"><div class="member-info"><h3>Tamim Anzar</h3><p>Programming Team</p></div></div>
@@ -700,7 +808,7 @@ Our hard work and perseverance have already led to strong results—we are curre
         <div class="member-card"><img src="anderson2 .png"><div class="member-info"><h3>Anderson Rocha</h3><p>Design Team</p></div></div>
 
         <div class="member-card"><img src="hamed.png"><div class="member-info"><h3>Hamed sawadogo</h3><p>Mechanical</p></div></div>
-        <div class="member-card"><img src="sharifato2.0.jpg"><div class="member-info"><h3>Sharifato Yembone</h3><p>Outreach Team</p></div></div>
+        <div class="member-card"><img src="sharifato.png"><div class="member-info"><h3>Sharifato Yembone</h3><p>Outreach Team</p></div></div>
         <div class="member-card"><img src="roy.png"><div class="member-info"><h3>Roy Mkouonga </h3><p>Programming Team</p></div></div>
         <div class="member-card"><img src="kodjo..png"><div class="member-info"><h3>Kodjo Hountondji</h3><p>Electrical Team</p></div></div>
         <div class="member-card"><img src="tairo.png"><div class="member-info"><h3>Tairou </h3><p>Electrical Team</p></div></div>
@@ -759,76 +867,230 @@ Our hard work and perseverance have already led to strong results—we are curre
 </section>
 </section>
 
-    <section id="stem-connections" class="container" style="background: #f8f9fa;">
-    <h2><i class="fas fa-robot"></i>Connections</h2>
+
+ <!--connect-->
+   <section id="stem-connections" class="container" style="background: #f8f9fa;">
+<h2><i class="fas fa-globe"></i>Stem Connections</h2>
     <div class="stem-grid">
-        <div class="stem-card">
-            <i class="fas fa-network-wired"></i>
-            <h3>Stem connections</h3>
-            <p>The Steel Titans actively engage with leaders in education, government, and the robotics industry to expand our knowledge and opportunities in STEM.
-We have connected with professionals such as Daniel Harris (Senior Executive Director, PSAL NYC DOE), who emphasized the importance of recognizing robotics and e-sports as competitive activities that require teamwork, strategy, and commitment.
-We also met with Dr. Larry D. Johnson, Jr., President of Bronx Community College, where we discussed the importance of expanding engineering pathways within the CUNY system and increasing access to STEM education.
-Through our work, we had the opportunity to speak with John B. King, Jr., Chancellor of SUNY and former U.S. Secretary of Education. We learned how government policy can support and expand access to engineering programs for students.
-Additionally, we visited Columbia University’s Engineering Department, where we explored the Makerspace lab and spoke with college students about their design processes. We also learned about student organizations such as the Columbia Space Initiative and CUFIRST.
-We also connected with Jon Miller Schwartz, Co-Founder and CEO of ULTRA Robotics, who shared his journey from FIRST Robotics Competition to leading a robotics company in New York City. He inspired us to use curiosity, hard work, and technical skills to pursue careers in STEM and entrepreneurship.
-Our team also participated in a special event with NYC Council Member Althea Stevens, who allocated $100,000 to the NYC FIRST STEM Center at the Andrew Freedman House. This funding expands access to robotics, engineering, and advanced technology opportunities for students across the Bronx. During the announcement, members of our team demonstrated our robot and showcased our work, highlighting the impact of STEM programs on students like us.
-These experiences have strengthened our understanding of real-world STEM applications and inspired us to continue growing as engineers and leaders.</p>
-        </div>
-        <div class="stem-card">
-            <div style="text-align: center; margin-top: 20px;"></div>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 20px;">
-  <img src="bell_organization-removebg-preview.png" alt="Bell Organization Logo" style="height: 150px; width: auto;">
-  <img src="EmbeddedImage-960x720-removebg-preview.png" alt="Claremont International High School Logo" style="height: 120px; width: auto;">
-            </div>
-            <h3>Partnerships & Sponsorships</h3>
-            <p>The Steel Titans actively build partnerships that support both our team and the broader community. We held a cookie fundraiser,
-                 where all proceeds were donated to the BELL Organization to support STEM-focused after-school programs for underserved youth in the Bronx.
-                  Through this initiative, we aimed not only to raise funds, but also to give back and expand access to STEM opportunities for others. Following this collaboration,
-                   the BELL Organization generously supported our team by donating LEGO SPIKE Prime kits, which have enhanced our ability to learn, build, and innovate, strengthening our robotics program. 
-                   Our Claremont International High School has also been instrumental in supporting us by helping with our budget, giving permission for fundraisers, and allowing us to showcase our robots at school events. 
-                   Through partnerships like these, we continue to create meaningful connections that promote STEM education, community impact, and mutual support.
-
-</p>
-        </div>
-        <div class="stem-card">
-            <div style="text-align: center; margin-top: 20px;"></div>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 20px;">
-  <img src="first_nyc_logo-removebg-preview.png" alt="nyc first Logo" style="height: 150px; width: auto;">
-  <img src="afh.png" alt="AFH STEM Logo" style="height: 120px; width: auto;">
-</div>
-            <h3>Mentorship and Support</h3>
-            <p>Our team is supported by dedicated mentors who guide us both technically and professionally throughout our robotics journey. At the NYC FIRST STEM Center at the Andrew Freedman House, we are mentored by Mr. Shorer and Mr. Rodriguez. They work with us during weekly robotics classes,
-teaching us essential skills in design, building, and programming while encouraging teamwork,
-problem-solving, and innovation. We are also supported by Jessy Devonou, an alumnus of our team, who provides guidance in coding and helps us develop our engineering portfolio. As a former team member, she brings valuable experience and insight that strengthens our growth.
-The NYC FIRST STEM Center provides a unique environment for students to explore STEM disciplines through hands-on learning. It is part of the broader FIRST (For Inspiration and Recognition of Science and Technology) network, which inspires young people to become science and 
-technology leaders. The center offers access to advanced tools, collaborative workspaces, and mentorship opportunities that help students grow both technically and personally. Located in the historic Andrew Freedman Home, the STEM Center blends a rich cultural legacy with 
-cutting-edge educational programs, giving students a creative space to innovate and collaborate on robotics, coding, and engineering projects.
-Through the support of our mentors and the resources provided by NYC FIRST and the AFH STEM Center, we continue to build not only our robot, 
-but also our confidence, technical abilities, and leadership skills. This guidance fosters a strong foundation for our team to succeed in competitions, develop innovative solutions, and inspire the next generation of STEM leaders.</p>
-        </div>
-<div class="stem-card">
-
-
-  <img src="ftc-logo-removebg-preview.png" alt="FTC Logo" class="ftc-logo">
-       <h2>
-    <img src="kenny donuts.jpeg" style="height: 80px;">
-    <img src="couch potato.jpeg" style="height: 80px;">
-    <img src="sith seturn.jpeg" style="height: 80px;">
-    <img src="mechatronics.jpeg" style="height: 80px;">
-    <img src="heights techies.jpeg" style="height: 80px;">
-    <img src="fruity pebbles.jpeg" style="height: 80px;">
-    <img src="cheetah x.jpeg" style="height: 80px;">
-  </h2>
-            <h3>Collaboration with FTC teams</h3>
-            <p style="font-weight: normal;">The Steel Titans actively collaborate with other FTC teams both in person and online to share knowledge, solve challenges, and grow together. This reflects the core value of FIRST: Gracious Professionalism. Many of the teams we work with have more experience than us, and their support has helped accelerate our learning.
-We regularly collaborate with 2 Train Robotics (FTC #24096) at the NYC FIRST STEM Center, where they assisted us with Mecanum drive coding. We also exchange parts and share design ideas. Kenny Donuts (FTC #20712) has supported us with troubleshooting and programming, while also collaborating with us by sharing materials and resources. 
-South Bronx Football Team (FTC #11997) has also played a key role in mentoring us, helping with both robot building and technical guidance, similar to the support we received from Kenny Donuts. Team SITH Saturn (FTC #26195),  provided valuable suggestions to improve our robot’s shooter system.
-Team Mechatronics (FTC #13368) gave us feedback on scoring multiple game elements efficiently and shared ideas to strengthen team motivation and performance. In addition to receiving support, we also actively give back to the FTC community. We supported Cheetah-X (FTC #32940) by providing robot parts and assisting them in building their robot. Similarly, we supported
- Fruity Pebbles (FTC #32583) and Steel Fangs (FTC #32783) by sharing materials and helping them with their robot build process.We also participated in an FTC International Collaboration Meeting hosted by Couch Potatoes (FTC #24426), where 12 teams from 10 different countries met virtually to exchange experiences and strategies. Through these collaborations, 
- we gained valuable technical knowledge in robot design, building, and competition strategy. We also developed new outreach ideas and strengthened our ability to work as part of a global STEM community.
-            </div>
+    <!-- PSAL -->
+    <div class="stem-card">
+        <img src="psal_logo.jpg" alt="PSAL Logo" style="height: 140px; width: 120px; display: block; margin: 0 auto;">
+        <h3>Daniel Harris</h3>
+        <p><strong>(Senior Executive Director, PSAL NYC DOE)</strong></p>
+        <p>
+            We connected with Daniel Harris, Senior Executive Director of PSAL NYC DOE, who emphasized the importance of recognizing robotics and e-sports as competitive activities that require teamwork, strategy, and commitment.
+        </p>
     </div>
+
+    <!-- BCC -->
+    <div class="stem-card">
+         <img src="BCC logo.png" alt="BCC Logo"style="height: 120px; width: 140px; display: block; margin: 0 auto;">
+        <h3>Dr. Larry D. Johnson Jr.</h3>
+        <p><strong>(President, Bronx Community College)</strong></p>
+        <p>
+           We met with Dr. Larry D. Johnson, Jr., President of Bronx Community College, where we discussed the importance of expanding engineering pathways within the CUNY system and increasing access to STEM education.
+        </p>
+    </div>
+
+    <!-- SUNY -->
+    <div class="stem-card">
+        <img src="suny logo.jpg" alt="SUNY Logo" style="height: 120px; width: 140px; display: block; margin: 0 auto;">
+        <h3>John B. King Jr.</h3>
+        <p><strong>(Chancellor of SUNY & Former U.S. Secretary of Education)</strong></p>
+        <p>
+            We had the opportunity to speak with John B. King, Jr., Chancellor of SUNY and former U.S. Secretary of Education. We learned how government policy can support and expand access to engineering programs for students.
+        </p>
+    </div>
+
+    <!-- ULTRA -->
+    <div class="stem-card">
+        <img src="ultra .avif" alt="ULTRA Robotics Logo" style="height: 120px; width: 120px; display: block; margin: 0 auto;">
+        <h3>Jon Miller Schwartz</h3>
+        <p><strong>(CEO of ULTRA Robotics)</strong></p>
+        <p>
+            We connected with Jon Miller Schwartz, Co-Founder and CEO of ULTRA Robotics, who shared his journey from FIRST Robotics Competition to leading a robotics company in New York City. He inspired us to use curiosity, hard work, and technical skills to pursue careers in STEM and entrepreneurship.
+        </p>
+    </div>
+ <!-- COLUMBIA UNIVERCITY -->
+    <div class="stem-card">
+        <img src="columbia univercity outreach team.jpeg" alt="Columbia University Logo" style="height: 120px; width: 120px; display: block; margin: 0 auto;">
+        <h3>Columbia University Engineering Department</h3>
+        <p></strong></p>
+        <p>
+            We visited Columbia University’s Engineering Department, where we explored the Makerspace lab and spoke with college students about their design processes. We also learned about student organizations such as the Columbia Space Initiative and CUFIRST.
+        </p>
+    </div>
+     <!-- COUNCIL MEMBAR -->
+    <div class="stem-card">
+        <img src="council member.jpg" alt="NYC Council Logo" style="height: 120px; width: 120px; display: block; margin: 0 auto;">
+        <h3>Althea Stevens</h3>
+        <p><strong>(NYC Council Member)</strong></p>
+        <p>
+            Our team participated in a special event with NYC Council Member Althea Stevens, who allocated $100,000 to the NYC FIRST STEM Center at the Andrew Freedman Home. This funding expands access to robotics, engineering, and advanced technology opportunities for students across the Bronx. During the announcement, members of our team demonstrated our robot and showcased our work, highlighting the impact of STEM programs on students like us.
+        </p>
+    </div>
+ </div>
 </section>
+<section id="partnerships" class="container partnerships-section">
+
+    <h2><i class="fas fa-handshake"></i> Partnerships & Sponsorships</h2>
+
+    <div class="partnerships-grid">
+
+        <!-- BELL -->
+        <div class="partnership-card">
+            <img src="bell organization.jpeg" alt="BELL Organization Logo" style="height: 120px; width: 180px; display: block; margin: 0 auto; ">
+
+            <div class="partnership-card-content">
+                <h3>BELL Organization</h3>
+                <p>
+                    The Steel Titans actively build partnerships that support both our team and the broader community. 
+                    We held a cookie fundraiser, where all proceeds were donated to the BELL Organization to support 
+                    STEM-focused after-school programs for underserved youth in the Bronx. Through this initiative, 
+                    we aimed not only to raise funds, but also to give back and expand access to STEM opportunities.
+
+                    Following this collaboration, the BELL Organization generously supported our team by donating 
+                    LEGO SPIKE Prime kits, strengthening our robotics program.
+                </p>
+            </div>
+        </div>
+
+        <!-- SCHOOL -->
+        <div class="partnership-card">
+            <img src="EmbeddedImage-960x720.jpg" alt="School Logo" style="height: 120px; width: 180px; display: block; margin: 0 auto; ">
+
+            <div class="partnership-card-content">
+                <h3>Claremont International High School</h3>
+                <p>
+                    Our school has been instrumental in supporting our team by helping with our budget, approving 
+                    fundraisers, and allowing us to showcase our robots at school events.
+
+                    Through this support, we continue growing in STEM, gaining real engineering experience, 
+                    and sharing our work with the school community.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="mentorship" class="container mentorship-section" style="background:#f8f9fa;">
+
+    <h2><i class="fas fa-chalkboard-teacher"></i> Mentorship & Support</h2>
+
+    <div class="mentorship-grid">
+
+        <!-- NYC FIRST STEM Center -->
+        <div class="mentorship-card">
+            <img src="first_nyc_logo.jpeg" alt="NYC FIRST STEM Center Logo">
+
+            <div class="mentorship-card-content">
+                <h3>NYC FIRST STEM Center</h3>
+                <p>Our team is supported by dedicated mentors who guide us both technically and professionally throughout our robotics journey. At the NYC FIRST STEM Center, we are mentored by Mr. Shorer and Mr. Rodriguez. They work with us during weekly robotics classes, teaching us essential skills in design, building, and programming while encouraging teamwork, problem-solving, and innovation. We are also supported by Jessy Devonou, an alumnus of our team, who provides guidance in coding and helps us develop our engineering portfolio. As a former team member, she brings valuable experience and insight that strengthens our growth. It is part of the broader FIRST network, which inspires young people to become science and technology leaders. Through the support of our mentors and the resources provided by NYC FIRST, we continue to build not only our robot, but also our confidence, technical abilities, and leadership skills. This guidance fosters a strong foundation for our team to succeed in competitions, develop innovative solutions, and inspire the next generation of STEM leaders.</p>
+            </div>
+        </div>
+
+        <!-- Andrew Freedman House -->
+        <div class="mentorship-card">
+            <img src="afh.png" alt="Andrew Freedman House Logo">
+
+            <div class="mentorship-card-content">
+                <h3>Andrew Freedman House</h3>
+                <p>At the NYC FIRST STEM Center at the Andrew Freedman Home, the STEM Center provides a unique environment for students to explore STEM disciplines through hands-on learning. The center offers access to advanced tools, collaborative workspaces, and mentorship opportunities that help students grow both technically and personally. Located in the historic Andrew Freedman Home, the STEM Center blends a rich cultural legacy with cutting-edge educational programs, giving students a creative space to innovate and collaborate on robotics, coding, and engineering projects.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+        
+    <section id="stem" class="container" style="background: #f8f9fa;">
+
+<h2>
+  <img src="ftc-logo.png" alt="FTC LOGO" style="height: 140px; width: 160px; display: block; margin: 0 auto;">
+  Collaborating with FTC Teams
+</h2>
+    <div class="stem-grid">
+
+        <div class="stem-card">
+            <img src="2t 2.2.png" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>2 Train Robotics</h3>
+            <p><strong>FTC #24096</strong></p>
+            <p>We regularly collaborate with 2 Train Robotics at the NYC FIRST STEM Center.
+They helped us by teaching and assisting us with Mecanum drive coding.
+We also exchange robot parts, programming ideas, and design concepts to improve both teams’ performance.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="kenny donuts.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Kenny Donuts</h3>
+            <p><strong>FTC #20712</strong></p>
+            <p>Kenny Donuts has supported us with troubleshooting, programming help, and technical guidance.
+We also collaborate by sharing materials, resources, and build ideas to strengthen both teams.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="heights techies.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>South Bronx Team</h3>
+            <p><strong>FTC #11997</strong></p>
+            <p>The South Bronx Team has played a strong mentorship role.
+They helped us with robot building techniques and technical problem-solving, guiding us through mechanical and design challenges.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="sith seturn.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>SITH Saturn</h3>
+            <p><strong>FTC #26195</strong></p>
+            <p>Team SITH Saturn provided us with valuable feedback on our shooter system design.
+Their suggestions helped us improve accuracy, efficiency, and overall robot performance.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="mechatronics.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Mechatronics</h3>
+            <p><strong>FTC #13368</strong></p>
+            <p>Mechatronics shared advice on scoring multiple game elements efficiently.
+They also provided ideas that helped us improve strategy, teamwork, and competition performance.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="couch potato.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Couch Potatoes</h3>
+            <p><strong>FTC #24426</strong></p>
+            <p>We participated in an international FTC collaboration meeting hosted by Couch Potatoes.
+In this virtual event, 12 teams from 10 countries shared experiences, strategies, and competition insights.
+We gained global perspectives on robot design, teamwork, and competition strategy.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="cheetah x.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Cheetah-X</h3>
+            <p><strong>FTC #32940</strong></p>
+            <p>We supported Cheetah-X by providing robot parts and hands-on build assistance.
+Our goal was to help them strengthen their robot construction and progress in their build process.</p>
+        </div>
+
+        <div class="stem-card">
+            <img src="steel_fangs.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Steel Fangs</h3>
+            <p><strong>FTC #32783</strong></p>
+            <p>We assisted Steel Fangs by providing materials and support during their robot build process.
+We helped them overcome mechanical challenges and improve their design. </p>
+        </div>
+
+        <div class="stem-card">
+            <img src="fruity pebbles.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
+            <h3>Fruity Pebbles</h3>
+            <p><strong>FTC #32583</strong></p>
+            <p>supported Fruity Pebbles by sharing materials and helping them with robot assembly and construction guidance.
+This helped them continue building and improving their robot.</p>
+        </div>
+
+    </div>
+
+</section> 
 
 
     <!-- Gallery Section -->
