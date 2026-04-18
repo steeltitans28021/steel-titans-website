@@ -57,11 +57,14 @@
             font-size: 2rem;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+       .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+.nav-links::-webkit-scrollbar {
+    display: none; /* hides scrollbar */
+}
 
         .nav-links a {
             color: white;
@@ -621,6 +624,41 @@
             color: #beb6b3;
         }
 
+        /* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a2e;
+    list-style: none;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    min-width: 220px;
+    z-index: 999;
+}
+
+/* Dropdown links */
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
         /* ========================= */
 /* ✅ RESPONSIVE FIXES ONLY */
 /* ========================= */
@@ -734,7 +772,15 @@ img {
     <li><a href="#team">Subteams</a></li>
     <li><a href="#members">Members</a></li>  
     <li><a href="#mentors">Mentors</a></li>   
-    <li><a href="#stem-connections">Connects</a></li>
+   <li class="dropdown">
+  <a href="#">Outreach ▼</a>
+  <ul class="dropdown-menu">
+    <li><a href="#stem-connections">STEM Connections</a></li>
+    <li><a href="#partnerships">Partnerships</a></li>
+    <li><a href="#mentorship">Mentorship</a></li>
+    <li><a href="#collaboration">Collaboration</a></li>
+  </ul>
+</li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
 </ul>
@@ -1068,7 +1114,7 @@ Our hard work and perseverance have already led to strong results—we are curre
 </section>
 
         
-    <section id="stem" class="container" style="background: #f8f9fa;">
+    <section id="collaboration" class="container">
 
 <h2>
   <img src="ftc-logo.png" alt="FTC LOGO" style="height: 140px; width: 160px; display: block; margin: 0 auto;">
