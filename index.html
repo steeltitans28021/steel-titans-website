@@ -641,8 +641,11 @@
 }
 
 /* Fix forced 3-column layout */
+/* STEM Connections Section - 3 Columns for Desktop, 1 Column for Mobile */
 .stem-grid {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns for desktop */
+    gap: 0.75rem;
 }
 
 /* Make images flexible */
@@ -651,9 +654,11 @@ img {
     height: auto;
 }
 
-/* Mobile fixes */
+/* For Mobile */
 @media (max-width: 768px) {
-
+    .stem-grid {
+        grid-template-columns: 1fr;  /* 1 column for mobile */
+    }
     /* Stack everything nicely */
     .team-grid,
     .members-grid,
@@ -710,7 +715,6 @@ img {
 }
 
 @media (max-width: 600px) {
-    /* Add responsive rules here if needed */
 }
 
 </style>
@@ -784,18 +788,18 @@ Our hard work and perseverance have already led to strong results—we are curre
                 <p>Connect Award – 2nd Place</p>
             </div>
             <div class="award-card">
-                <i class="fas fa-lightbulb"></i>
+                 <img src="innovation_trophy-removebg-preview.png" style="height: 140px; width: 90px; display: block; margin: 0 auto;" alt="award">
                 <h3>NYC Qualifier 4</h3>
                 <p>Innovate Award sponsored by RTX</p>
             </div>
            <div class="award-card">
-    <i class="fas fa-gamepad"></i>
+     <img src="control_trophy-removebg-preview.png" alt="award" style="height: 140px; width: 90px; display: block; margin: 0 auto;">
     <h3>NYC Qualifier 11</h3>
     <p>Control Award</p>
 </div>
 
 <div class="award-card">
-    <i class="fas fa-crown"></i>
+    <img src="winning_allience_trophy-removebg-preview.png" alt="award" style="height: 150px; width: 100px; display: block; margin: 0 auto;">
     <h3>NYC Qualifier 11</h3>
     <p>Winning Alliance – 1st Team Selected</p>
 </div>
