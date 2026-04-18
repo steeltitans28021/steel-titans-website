@@ -141,6 +141,7 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(247, 209, 196, 0.6);
 }
+
         /* Sections */
         .container {
     max-width: 1200px;
@@ -620,6 +621,70 @@
             color: #beb6b3;
         }
 
+        /* ========================= */
+/* ✅ RESPONSIVE FIXES ONLY */
+/* ========================= */
+
+/* Fix hero scaling */
+.hero {
+    min-height: 100vh;
+    height: auto;
+}
+
+/* Responsive text */
+.hero-content h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Fix forced 3-column layout */
+.stem-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Make images flexible */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+
+    /* Stack everything nicely */
+    .team-grid,
+    .members-grid,
+    .mentors-grid,
+    .awards-grid,
+    .stem-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Fix contact section */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Smaller hero text */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    /* Navbar spacing */
+    .nav-links a {
+        padding: 10px 0;
+        display: block;
+    }
+}
+
         /* Responsive */
         @media (max-width: 768px) {
             .contact-grid {
@@ -638,7 +703,7 @@
             }
             .nav-links.active { display: flex; }
         };
-        @media (max-width: 1000px) {
+@media (max-width: 1000px) {
     .collab-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -649,15 +714,7 @@
         grid-template-columns: 1fr;
     }
 }
-    </style>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEEL TITANS FTC Team 28021</title>
-    <link rel="icon" type="image/png" href="team-logo.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</style>
 </head>
 <body>
     <!-- Header -->
