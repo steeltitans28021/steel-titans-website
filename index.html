@@ -1,1388 +1,916 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steel Titans FTC Team 28021</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="team-logo.png">   
-    <style>
-        :root {
-    --primary: #1a1a2e;
-    --secondary: #0f3460;
-    --accent: #ff6b35;
-    --text: #222;
-    --light: #f8f9fa;
-}
-
-body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    color: var(--text);
-    background: white;
-} * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            padding-top: 80px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: rgb(133, 129, 129);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        nav {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            color: #ff6b35;
-            font-size: 2rem;
-        }
-
-       .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 1rem;
-}
-.nav-links::-webkit-scrollbar {
-    display: none; /* hides scrollbar */
-}
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #f6f1f0;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-       /* Hero Section */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-#background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    z-index: -1; 
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: rgb(130, 122, 122);
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.cta-button {
-    display: inline-block;
-    background: #50504f;
-    color: white;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    transition: all 0.3s;
-    box-shadow: 0 5px 15px rgba(248, 232, 226, 0.4);
-    border: none;
-    cursor: pointer;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(247, 209, 196, 0.6);
-}
-
-        /* Sections */
-        .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-
-      section {
-    padding: 2rem 2rem;
-}
-
-        h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1a1a2e;
-        }
-
-        h2 i {
-            color: #1b1b1c;
-            margin-right: 1rem;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .about-card {
-            background: rgb(50, 184, 221);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .about-card i {
-            font-size: 3rem;
-            color: #857d7d;
-            margin-bottom: 1rem;
-        }
-
-        /* Awards Section */
-        .award-card {
-    background: linear-gradient(135deg, #cac7c6, #4e4c4c);
-    color: rgb(23, 23, 23);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    
-    height: 250px;             
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    
-    align-items: center;       
-    
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-        .award-card i {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .award-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.3);
-        }
-        .awards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-.award-card i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 0.8fr));
-            gap: 2rem;
-        }
-
-        .team-member {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-
-        .team-member img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .team-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-       /* STEM Connections Section - Bigger Blocks */
-.stem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
-    gap: 1.5rem;
-}
-
- .stem-card {
-    background: rgb(145, 148, 147);
-    border-radius: 15px;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s;
-      
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.stem-card i {
-    font-size: 4rem;
-    color: #f2ebe9;
-    margin-bottom: 1.5rem;
-}
-
-.stem-card h3 {
-    margin-bottom: 1.2rem;
-    color: #101011;
-    font-size: 1.5rem;
-}
-
-.stem-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-.stem-card {
-  position: relative;
-  padding-top: 20px;
-}
-
-.stem-card p strong {
-    color: #1a1a2e;
-}
-.stem-card h3 {
-    margin-bottom: 0px;
-}
-
-.stem-card p {
-    margin-top: 0px;
-}
-
-.stem-card,
-
-.partnerships-card {
-    margin-top: 3rem;
-}
-
-/* Mentorship Section - Grid Layout (Logo on Top) */
-.mentorship-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive grid */
-    gap: 2rem;
-}
-
-.mentorship-card {
-    display: flex;
-    flex-direction: column; /* Keeps logo on top */
-    align-items: center;
-    gap: 1rem;
-
-    background: #919493;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-
-    transition: transform 0.3s;
-}
-
-.mentorship-card:hover {
-    transform: translateY(-5px);
-}
-
-.mentorship-card img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain; /* Ensures logo is not stretched */
-}
-
-.mentorship-card-content {
-    text-align: center; /* Centers text content */
-}
-
-.mentorship-card h3 {
-    margin-bottom: 0.5rem;
-    color: #111;
-}
-
-.mentorship-card p {
-    margin: 0;
-    line-height: 1.5;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel Titans FTC Team 28021</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="team-logo.png">
+<style>
+/* ============================================================
+   STEEL TITANS — DESIGN SYSTEM
+   Steel / forge / circuitry. Team ID 28021 threaded throughout
+   as a coordinate tag. HUD viewfinder corners = robot vision.
+   ============================================================ */
+:root{
+  --void:        #0a0d12;
+  --panel:       #10151c;
+  --panel-2:     #161c25;
+  --steel:       #3d4650;
+  --steel-line:  #2a323c;
+  --spark:       #ff5b1f;
+  --spark-dim:   #b8410f;
+  --circuit:     #35d0c4;
+  --ink:         #eef1f4;
+  --ink-dim:     #9aa5b1;
+  --ink-faint:   #5c6773;
+
+  --display: 'Rajdhani', sans-serif;
+  --body:    'Inter', sans-serif;
+  --mono:    'JetBrains Mono', monospace;
+
+  --radius: 4px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--body);
+  background:var(--void);
+  color:var(--ink);
+  line-height:1.7;
+  padding-top:76px;
+  overflow-x:hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+::selection{background:var(--spark); color:var(--void);}
+
+img{max-width:100%; height:auto; display:block;}
+
+a{color:inherit;}
+
+/* ---------- background circuitry ---------- */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(var(--steel-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--steel-line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.14;
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{max-width:1200px; margin:0 auto; padding:2rem 1.5rem; position:relative; z-index:1;}
+section{padding:5.5rem 0; position:relative; z-index:1;}
+.panel-alt{background:var(--panel);}
+
+/* ---------- section headers ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.78rem;
+  letter-spacing:.22em;
+  color:var(--circuit);
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.9rem;
+  margin-bottom:.9rem;
+}
+.eyebrow::before, .eyebrow::after{
+  content:"";
+  height:1px; width:40px;
+  background:linear-gradient(90deg, transparent, var(--circuit));
+}
+.eyebrow::after{background:linear-gradient(90deg, var(--circuit), transparent);}
+
+h2{
+  font-family:var(--display);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  font-size:clamp(2rem, 4.5vw, 2.85rem);
+  text-align:center;
+  margin-bottom:3rem;
+  color:var(--ink);
+}
+h2 i{color:var(--spark); margin-right:.7rem; font-size:.85em;}
+
+/* ---------- corner-bracket card frame (signature element) ---------- */
+.tframe{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--steel-line);
+  border-radius:var(--radius);
+  transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.tframe::before, .tframe::after{
+  content:"";
+  position:absolute;
+  width:16px; height:16px;
+  border:2px solid var(--spark);
+  opacity:0;
+  transition:opacity .35s ease;
+}
+.tframe::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+.tframe::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+.tframe:hover{transform:translateY(-6px); border-color:var(--steel);}
+.tframe:hover::before, .tframe:hover::after{opacity:1;}
+
+.tag{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  color:var(--circuit);
+  text-transform:uppercase;
+}
+
+/* ---------- header / nav ---------- */
+header{
+  background:rgba(10,13,18,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--steel-line);
+  position:fixed; width:100%; top:0; z-index:1000;
+}
+nav{
+  max-width:1300px; margin:0 auto;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.8rem 2rem;
+}
+.logo{
+  font-family:var(--display); font-weight:700; letter-spacing:.04em;
+  font-size:1.25rem; text-transform:uppercase;
+  display:flex; align-items:center; gap:10px;
+  color:var(--ink);
+}
+.logo img{height:38px;}
+.logo .idnum{color:var(--spark); font-family:var(--mono); font-size:.85rem; letter-spacing:.1em;}
+
+.nav-links{display:flex; list-style:none; gap:1.6rem; align-items:center;}
+.nav-links a{
+  color:var(--ink-dim); text-decoration:none; font-size:.92rem;
+  font-family:var(--mono); letter-spacing:.03em; text-transform:uppercase;
+  transition:color .25s ease; position:relative; padding:.3rem 0;
+}
+.nav-links > li > a::after{
+  content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+  background:var(--spark); transition:width .25s ease;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-links > li > a:hover::after{width:100%;}
+
+.hamburger{display:none; flex-direction:column; cursor:pointer; gap:5px;}
+.hamburger span{width:24px; height:2px; background:var(--ink);}
+
+.dropdown{position:relative;}
+.dropdown-menu{
+  display:none; position:absolute; top:100%; left:0;
+  background:var(--panel); border:1px solid var(--steel-line);
+  list-style:none; padding:.4rem 0; min-width:210px; border-radius:var(--radius);
+}
+.dropdown-menu a{display:block; padding:.6rem 1rem; text-transform:none; letter-spacing:0;}
+@media (min-width:769px){ .dropdown:hover .dropdown-menu{display:block;} }
+.dropdown-menu.active{display:block;}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; min-height:100vh; height:auto;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+#background-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:-2;
+  filter:grayscale(.25) contrast(1.05);
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0; z-index:-1;
+  background:
+    linear-gradient(180deg, rgba(10,13,18,.55) 0%, rgba(10,13,18,.75) 55%, var(--void) 100%);
+}
+.hero-content{
+  position:relative; z-index:1; text-align:center; color:var(--ink);
+  padding:2rem;
+}
+.hero-tag{
+  font-family:var(--mono); color:var(--circuit); letter-spacing:.3em;
+  font-size:.85rem; margin-bottom:1.2rem;
+}
+.hero-content h1{
+  font-family:var(--display); font-weight:700; text-transform:uppercase;
+  font-size:clamp(2.6rem, 9vw, 5.5rem);
+  letter-spacing:.04em;
+  line-height:1;
+  margin-bottom:1rem;
+  text-shadow:0 0 40px rgba(255,91,31,.25);
+}
+.hero-content h1 span{color:var(--spark);}
+.hero-content p{
+  font-family:var(--mono);
+  font-size:clamp(.85rem,2vw,1.05rem);
+  color:var(--ink-dim); letter-spacing:.08em;
+  margin-bottom:2.2rem;
+}
+.cta-button{
+  display:inline-block; position:relative;
+  background:var(--spark); color:var(--void);
+  font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+  padding:.95rem 2.4rem;
+  text-decoration:none; border:none; cursor:pointer;
+  font-size:1.05rem; clip-path:polygon(0 0,calc(100% - 14px) 0,100% 100%,14px 100%);
+  transition:all .3s ease;
+}
+.cta-button:hover{background:#ff7440; transform:translateY(-3px);}
+
+.scroll-cue{
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  font-family:var(--mono); font-size:.7rem; color:var(--ink-faint);
+  letter-spacing:.2em; display:flex; flex-direction:column; align-items:center; gap:.5rem;
+  animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+/* ---------- about ---------- */
+.about-grid{
+  display:grid; grid-template-columns:1fr 1.3fr; gap:3rem; align-items:start;
+}
+.stat-block{
+  background:var(--panel); border:1px solid var(--steel-line); border-radius:var(--radius);
+  padding:2rem; position:sticky; top:100px;
+}
+.stat-block .tag{display:block; margin-bottom:.6rem;}
+.stat-num{
+  font-family:var(--display); font-weight:700; font-size:3.2rem; color:var(--ink); line-height:1;
+}
+.stat-num span{color:var(--spark);}
+.stat-label{font-family:var(--mono); font-size:.78rem; color:var(--ink-dim); margin:.5rem 0 1.2rem;}
+.gauge{height:6px; background:var(--steel-line); border-radius:3px; overflow:hidden;}
+.gauge-fill{
+  height:100%; width:0%; background:linear-gradient(90deg, var(--spark), var(--circuit));
+  transition:width 1.4s cubic-bezier(.22,.9,.3,1);
+}
+.about-copy p{color:var(--ink-dim); margin-bottom:1.1rem; font-size:1.02rem;}
+.about-copy strong{color:var(--ink);}
+
+/* ---------- awards ---------- */
+.awards-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.6rem;}
+.award-card{
+  padding:2.2rem 1.5rem; text-align:center;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:230px;
+}
+.award-card i{font-size:2.6rem; color:var(--spark); margin-bottom:1rem;}
+.award-card img{height:110px; margin:0 auto 1rem; filter:drop-shadow(0 0 14px rgba(255,91,31,.25));}
+.award-card h3{font-family:var(--display); font-weight:700; letter-spacing:.03em; font-size:1.15rem; margin-bottom:.4rem; text-transform:uppercase;}
+.award-card p{color:var(--ink-dim); font-size:.92rem;}
+
+/* ---------- generic grids reused across sections ---------- */
+.team-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.6rem;}
+.team-member{padding:2rem 1.2rem; text-align:center;}
+.icon-plate{
+  width:64px; height:64px; margin:0 auto 1.1rem;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--steel-line); border-radius:50%;
+  background:var(--void); color:var(--spark); font-size:1.6rem;
+}
+.team-info h3{font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:.03em; font-size:1.1rem; margin-bottom:.3rem;}
+.team-info p{color:var(--ink-dim); font-family:var(--mono); font-size:.8rem; letter-spacing:.03em;}
+
+.members-grid, .mentors-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.6rem;}
+.member-card, .mentor-card{padding:1.6rem 1rem 1.8rem; text-align:center;}
+.member-card img, .mentor-card img{
+  width:130px; height:130px; object-fit:cover; border-radius:50%;
+  margin:0 auto 1rem; border:2px solid var(--steel-line);
+}
+.member-info h3, .mentor-info h3{font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:.02em; font-size:1.05rem;}
+.member-info p, .mentor-info p{color:var(--circuit); font-family:var(--mono); font-size:.75rem; letter-spacing:.03em; margin-top:.3rem;}
+.captain-flag{
+  display:inline-block; margin-top:.5rem; font-family:var(--mono); font-size:.65rem;
+  color:var(--void); background:var(--spark); padding:.15rem .5rem; letter-spacing:.1em; border-radius:2px;
+}
+
+.stem-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;}
+.stem-card{padding:2rem 1.5rem; text-align:center;}
+.stem-card img{height:100px; object-fit:contain; margin:0 auto 1.2rem;}
+.stem-card h3{font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:1.15rem; margin-bottom:.3rem; letter-spacing:.02em;}
+.stem-card .role{font-family:var(--mono); color:var(--circuit); font-size:.75rem; letter-spacing:.03em; display:block; margin-bottom:.9rem;}
+.stem-card p{color:var(--ink-dim); font-size:.92rem;}
+
+.mentorship-grid, .partnerships-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(430px,1fr)); gap:2rem;}
+.mentorship-card, .partnership-card{display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2rem 1.6rem; text-align:center;}
+.mentorship-card img, .partnership-card img{width:110px; height:110px; object-fit:contain;}
+.mentorship-card-content h3, .partnership-card-content h3{font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:1.2rem; margin-bottom:.6rem; letter-spacing:.02em;}
+.mentorship-card-content p, .partnership-card-content p{color:var(--ink-dim); font-size:.93rem;}
+
+/* ---------- gallery ---------- */
+.gallery-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;}
+.gallery-item{
+  position:relative; overflow:hidden; border-radius:var(--radius);
+  border:1px solid var(--steel-line); cursor:pointer;
+}
+.gallery-item img{height:220px; width:100%; object-fit:cover; transition:transform .45s ease, filter .45s ease; background:var(--panel-2);}
+.gallery-item img.img-missing{
+  height:220px; display:flex; align-items:center; justify-content:center;
+  color:var(--ink-faint); font-family:var(--mono); font-size:.7rem;
+}
+.img-fallback{
+  height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.6rem; background:var(--panel-2); color:var(--ink-faint);
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.05em; text-align:center; padding:.5rem;
+}
+.img-fallback i{font-size:1.4rem; color:var(--steel);}
+.gallery-item::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 60%, rgba(10,13,18,.85));
+  opacity:0; transition:opacity .35s ease;
+}
+
+.gallery-item:hover img{transform:scale(1.08); filter:saturate(1.1);}
+.gallery-item:hover::after{opacity:1;}
+
+.lightbox{
+  display:none; position:fixed; inset:0; z-index:2000;
+  background:rgba(5,7,10,.95); justify-content:center; align-items:center;
+}
+.lightbox img{max-width:90%; max-height:90%; border-radius:6px; border:1px solid var(--steel-line);}
+
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+.contact-info h3{
+  font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+  color:var(--spark); margin-bottom:1.2rem; font-size:1.4rem;
+}
+.contact-item{display:flex; align-items:center; margin-bottom:1.1rem;}
+.contact-item i{color:var(--circuit); width:28px; font-size:1.1rem;}
+.contact-item span, .contact-item a{margin-left:10px; color:var(--ink-dim); text-decoration:none;}
+.contact-item a:hover{color:var(--ink);}
+
+.contact-form{background:var(--panel); border:1px solid var(--steel-line); border-radius:var(--radius); padding:2rem;}
+.form-group{margin-bottom:1.3rem;}
+.form-group input, .form-group textarea{
+  width:100%; padding:.9rem 1rem; background:var(--void);
+  border:1px solid var(--steel-line); border-radius:3px; color:var(--ink);
+  font-family:var(--body); font-size:.95rem; transition:border-color .3s ease;
+}
+.form-group input::placeholder, .form-group textarea::placeholder{color:var(--ink-faint);}
+.form-group input:focus, .form-group textarea:focus{outline:none; border-color:var(--spark);}
+
+/* ---------- partners strip ---------- */
+.partners-logos{display:flex; justify-content:center; gap:4rem; flex-wrap:wrap; align-items:center;}
+.partners-logos img{height:80px; filter:grayscale(1) opacity(.75); transition:filter .3s ease, transform .3s ease;}
+.partners-logos img:hover{filter:grayscale(0) opacity(1); transform:scale(1.08);}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--void); border-top:1px solid var(--steel-line);
+  text-align:center; padding:3rem 2rem; position:relative; z-index:1;
+}
+footer .tagline{font-family:var(--mono); color:var(--ink-faint); font-size:.75rem; letter-spacing:.2em; margin-bottom:1rem; text-transform:uppercase;}
+.social-links{display:flex; justify-content:center; gap:1.3rem; margin:1rem 0;}
+.social-links a{color:var(--ink-dim); font-size:1.3rem; transition:color .3s ease;}
+.social-links a:hover{color:var(--spark);}
+footer p{color:var(--ink-faint); font-size:.85rem;}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .stat-block{position:static;}
+  .stem-grid{grid-template-columns:repeat(2,1fr);}
+  .mentorship-grid, .partnerships-grid{grid-template-columns:1fr;}
+}
+@media (max-width:768px){
+  .contact-grid{grid-template-columns:1fr;}
+  .hamburger{display:flex;}
+  .nav-links{
+    display:none; position:absolute; top:100%; left:0; width:100%;
+    background:var(--panel); border-top:1px solid var(--steel-line);
+    flex-direction:column; padding:1rem; gap:0;
+  }
+  .nav-links.active{display:flex;}
+  .nav-links a{display:block; padding:.8rem 0;}
+  .dropdown-menu{position:static; border:none; padding-left:1rem;}
+}
+@media (max-width:600px){
+  .stem-grid{grid-template-columns:1fr;}
+  section{padding:3.5rem 0;}
 }
-
-/* Team Members Section */
-.members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-}
-
-.member-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    text-align: center;
-}
-
-.member-card:hover {
-    transform: translateY(-10px);
-}
-
-.member-card img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;  
-    margin: 1rem auto;
-    display: block;
-}
-
-.member-info {
-    padding: 1rem;
-}
-
-.member-info p {
-    color: #5a5857;
-    font-weight: bold;
-}
-/* Mentors Section */
-.mentors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-}
-
-.mentor-card {
-    background: rgb(255, 255, 255);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    text-align: center;
-    border-top: 5px solid #737170;
-}
-
-.mentor-card:hover {
-    transform: translateY(-10px);
-}
-
-.mentor-card img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 1rem auto;
-    display: block;
-}
-.mentor-info {
-    padding: 1rem;
-}
-
-.mentor-info h3 {
-    margin-bottom: 0.5rem;
-    color: #1a1a2e;
-}
-
-.mentor-info p {
-    color: #8b8b8e;
-    font-weight: bold;
-}
-/* Partnerships Section - Logo on top layout */
-.partnerships-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 2rem;
-}
-
-.partnership-card {
-    display: flex;
-    flex-direction: column; /* changed to vertical layout */
-    align-items: center;
-    gap: 1.5rem;
-
-    background: #919493;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-
-    transition: transform 0.3s;
-}
-
-.partnership-card:hover {
-    transform: translateY(-5px);
-}
-
-.partnership-card img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
-}
-
-.partnership-card-content {
-    text-align: center;
-}
-
-.partnership-card h3 {
-    margin-bottom: 0.5rem;
-    color: #111;
-}
-
-.partnership-card p {
-    margin: 0;
-    line-height: 1.5;
-}
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            color: #ff6b35;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item i {
-            color: #ff6b35;
-            width: 30px;
-            font-size: 1.2rem;
-        }
-
-        .contact-item span {
-            margin-left: 10px;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ff6b35;
-        }
-        /*Logo section*/
-.partners-logos img {
-    transition: transform 0.3s;
-    cursor: pointer;
-}
-
-.partners-logos img:hover {
-    transform: scale(1.15); 
-}
-        /* Footer */
-        footer {
-            background: #1a1a2e;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #beb6b3;
-        }
-
-        /* Dropdown container */
-.dropdown {
-    position: relative;
-}
-
-/* Hide dropdown by default */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #1a1a2e;
-    list-style: none;
-    padding: 0.5rem 0;
-    border-radius: 8px;
-    min-width: 220px;
-    z-index: 999;
-}
-
-/* Dropdown links */
-.dropdown-menu li {
-    padding: 0;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 10px 15px;
-    color: white;
-}
-
-@media (min-width: 769px) {
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-}
-
-.dropdown-menu.active {
-    display: block;
-}
-
-        /* ========================= */
-/* ✅ RESPONSIVE FIXES ONLY */
-/* ========================= */
-
-/* Fix hero scaling */
-.hero {
-    min-height: 100vh;
-    height: auto;
-}
-
-/* Responsive text */
-.hero-content h1 {
-    font-size: clamp(2rem, 6vw, 4rem);
-}
-
-.hero-content p {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-}
-
-/* Fix forced 3-column layout */
-/* STEM Connections Section - 3 Columns for Desktop, 1 Column for Mobile */
-.stem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* 3 columns for desktop */
-    gap: 0.75rem;
-}
-
-/* Make images flexible */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* For Mobile */
-@media (max-width: 740px) {
-    .stem-grid {
-        grid-template-columns: 3fr;  
-    }
-    /* Stack everything nicely */
-    .team-grid,
-    .members-grid,
-    .mentors-grid,
-    .awards-grid,
-    .stem-grid,
-    .gallery-grid {
-        grid-template-columns: 3fr;
-    }
-
-    /* Fix contact section */
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Smaller hero text */
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    /* Navbar spacing */
-    .nav-links a {
-        padding: 10px 0;
-        display: block;
-    }
-}
-
-        /* Responsive */
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    .hamburger { display: flex; }
-    .nav-links { 
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #1a1a2e;
-        flex-direction: column;
-        padding: 1rem;
-    }
-    .nav-links.active { display: flex; }
-}
-@media (max-width: 1000px) {
-    .collab-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-}
-
 </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Logo" style="height:40px;">
-              STEEL TITANS FTC 28021
-            </div>
-           <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#team">Subteams</a></li>
-    <li><a href="#members">Members</a></li>  
-    <li><a href="#mentors">Mentors</a></li>   
-   <li class="dropdown">
-  <a href="#stem-connections">Outreach ▼</a>
-  <ul class="dropdown-menu">
-    <li><a href="#stem-connections">STEM Connections</a></li>
-    <li><a href="#partnerships">Partnerships</a></li>
-    <li><a href="#mentorship">Mentorship</a></li>
-    <li><a href="#collaboration">Collaboration</a></li>
-  </ul>
-</li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
 
-   <!-- Hero Section -->
+<header>
+  <nav>
+    <div class="logo">
+      <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Logo">
+      STEEL TITANS <span class="idnum">#28021</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#team">Subteams</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#mentors">Mentors</a></li>
+      <li class="dropdown">
+        <a href="#stem-connections">Outreach ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#stem-connections">STEM Connections</a></li>
+          <li><a href="#partnerships">Partnerships</a></li>
+          <li><a href="#mentorship">Mentorship</a></li>
+          <li><a href="#collaboration">Collaboration</a></li>
+        </ul>
+      </li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
 <section id="home" class="hero">
-    <video autoplay muted loop id="background-video">
-        <source src="202604152319 (1).mp4" type="video/mp4">
-        <!-- Fallback for unsupported browsers -->
-        Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-        <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Logo" style="height:300px; margin-bottom:1rem;">
-        <h1>STEEL TITANS</h1>
-        <p>FTC TEAM 28021 | Forging the Future of Robotics</p>
-        <a href="#about" class="cta-button">Discover Our Team</a>
-    </div>
+  <video autoplay muted loop playsinline id="background-video">
+    <source src="202604152319 (1).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="Steel Titans Logo" style="height:180px; margin:0 auto 1.5rem;">
+    <p class="hero-tag">FTC TEAM // 28021 — BRONX, NY</p>
+    <h1>STEEL <span>TITANS</span></h1>
+    <p>Forging the future of robotics, one weld at a time.</p>
+    <a href="#about" class="cta-button">Discover Our Team</a>
+  </div>
+  <div class="scroll-cue">SCROLL ↓</div>
 </section>
-    <!-- About Section -->
-    <section id="about" class="container">
-        <h2><i class="fas fa-info-circle"></i>About STEEL TITANS</h2>
-        <div class="about-grid">
-            <div class="about-card">
-                <i class="fas fa-trophy"></i>
-                <h3>Our Journey</h3>
-                <p>The Steel Titans are an FTC team from Claremont International High School in the Bronx, NY founded in September 2024. Now in our second year, we conduct most of our work at the NYC FIRST STEM Center at the Andrew Freedman House.
 
-As recently arrived immigrants, our team members have worked hard to learn, communicate, and succeed in a new environment. Most of us began with little to no prior experience in robotics, but through dedication and teamwork, we have embraced the challenge. This journey has been about more than just building a robot—it has been about developing confidence, leadership, and resilience.
+<!-- About -->
+<section id="about" class="container reveal">
+  <p class="eyebrow">Who We Are</p>
+  <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
+  <div class="about-grid">
+    <div class="stat-block">
+      <span class="tag">Live Standing</span>
+      <div class="stat-num">13<span>/149</span></div>
+      <div class="stat-label">Current NYC Team Ranking</div>
+      <div class="gauge"><div class="gauge-fill" data-fill="91"></div></div>
+      <p style="font-family:var(--mono); font-size:.7rem; color:var(--ink-faint); margin-top:.6rem;">TOP 9% · NYC METRO</p>
+    </div>
+    <div class="about-copy">
+      <p>The Steel Titans are an FTC team from <strong>Claremont International High School</strong> in the Bronx, NY, founded in September 2024. Now in our second year, we conduct most of our work at the NYC FIRST STEM Center at the Andrew Freedman House.</p>
+      <p>As recently arrived immigrants, our team members have worked hard to learn, communicate, and succeed in a new environment. Most of us began with little to no prior experience in robotics, but through dedication and teamwork, we have embraced the challenge. This journey has been about more than just building a robot — it has been about developing confidence, leadership, and resilience.</p>
+      <p>We are also part of a credit-bearing class at the NYC FIRST STEM Center, where we gain valuable technical and professional skills that support both our robotics work and future careers. We receive hands-on training with advanced tools and technologies, including <strong>CNC machines, laser cutters, Cricut machines, and 3D printers</strong>. We also learn 3D modeling and design, allowing us to create, prototype, and improve parts for our robot.</p>
+      <p>Our hard work and perseverance have already led to strong results — we are currently ranked <strong>13th out of 149 teams</strong> across New York City.</p>
+    </div>
+  </div>
+</section>
 
-We are also part of a credit-bearing class at the NYC FIRST STEM Center at the Andrew Freedman House. In this program, we gain valuable technical and professional skills that support both our robotics work and future careers. We receive hands-on training with advanced tools and technologies, including CNC machines, laser cutters, Cricut machines, and 3D printers. We also learn 3D modeling and design, allowing us to create, prototype, and improve parts for our robot.
 
-Our hard work and perseverance have already led to strong results—we are currently ranked 13th out of 149 teams across New York City.</p>
-            </div>
-        </div>
-    </section>
+<!-- Awards -->
+<section id="awards" class="panel-alt reveal">
+  <div class="container">
+    <p class="eyebrow">2025–2026 Season</p>
+    <h2><i class="fas fa-award"></i>Awards &amp; Achievements</h2>
+    <div class="awards-grid">
+      <div class="award-card tframe">
+        <i class="fas fa-network-wired"></i>
+        <h3>NYC Qualifier 1</h3>
+        <p>Connect Award — 2nd Place</p>
+      </div>
+      <div class="award-card tframe">
+        <img src="innovation_trophy-removebg-preview.png" alt="award">
+        <h3>NYC Qualifier 4</h3>
+        <p>Innovate Award, sponsored by RTX</p>
+      </div>
+      <div class="award-card tframe">
+        <img src="control_trophy-removebg-preview.png" alt="award">
+        <h3>NYC Qualifier 11</h3>
+        <p>Control Award</p>
+      </div>
+      <div class="award-card tframe">
+        <img src="winning_allience_trophy-removebg-preview.png" alt="award">
+        <h3>NYC Qualifier 11</h3>
+        <p>Winning Alliance — 1st Team Selected</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Awards Section -->
-    <section id="awards" class="container">
-        <h2><i class="fas fa-award"></i>Awards & Achievements (2025–2026 Season)</h2>
-        <div class="awards-grid">
-            <div class="award-card">
-                <i class="fas fa-network-wired"></i>
-                <h3>NYC Qualifier 1</h3>
-                <p>Connect Award – 2nd Place</p>
-            </div>
-            <div class="award-card">
-                 <img src="innovation_trophy-removebg-preview.png" style="height: 140px; width: 90px; display: block; margin: 0 auto;" alt="award">
-                <h3>NYC Qualifier 4</h3>
-                <p>Innovate Award sponsored by RTX</p>
-            </div>
-           <div class="award-card">
-     <img src="control_trophy-removebg-preview.png" alt="award" style="height: 140px; width: 90px; display: block; margin: 0 auto;">
-    <h3>NYC Qualifier 11</h3>
-    <p>Control Award</p>
-</div>
+<!-- Subteams -->
+<section id="team" class="container reveal">
+  <p class="eyebrow">How We're Built</p>
+  <h2><i class="fas fa-user-friends"></i>Subteams</h2>
+  <div class="team-grid">
+    <div class="team-member tframe">
+      <div class="icon-plate"><i class="fas fa-pencil-alt"></i></div>
+      <div class="team-info"><h3>Design Team</h3><p>CAD Design</p></div>
+    </div>
+    <div class="team-member tframe">
+      <div class="icon-plate"><i class="fas fa-code"></i></div>
+      <div class="team-info"><h3>Programming Team</h3><p>Software &amp; Autonomous</p></div>
+    </div>
+    <div class="team-member tframe">
+      <div class="icon-plate"><i class="fas fa-wrench"></i></div>
+      <div class="team-info"><h3>Mechanical Team</h3><p>Mechanical Design</p></div>
+    </div>
+    <div class="team-member tframe">
+      <div class="icon-plate"><i class="fas fa-cogs"></i></div>
+      <div class="team-info"><h3>Electrical Team</h3><p>Wiring &amp; Electronics</p></div>
+    </div>
+    <div class="team-member tframe">
+      <div class="icon-plate"><i class="fas fa-handshake"></i></div>
+      <div class="team-info"><h3>Outreach Team</h3><p>Community Engagement</p></div>
+    </div>
+  </div>
+</section>
 
-<div class="award-card">
-    <img src="winning_allience_trophy-removebg-preview.png" alt="award" style="height: 150px; width: 100px; display: block; margin: 0 auto;">
-    <h3>NYC Qualifier 11</h3>
-    <p>Winning Alliance – 1st Team Selected</p>
-</div>
-    </section>
-
-    <!-- Sub_Team Section -->
-    <section id="team" class="container" style="background: #f8f9fa;">
-        <h2><i class="fas fa-user-friends"></i>Subteams</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <div style="background: linear-gradient(45deg,  #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-pencil-alt" style="font-size: 4rem;"></i>
-                </div>
-                <div class="team-info">
-                    <h3>Design Team</h3>
-                    <p>CAD Design</p>
-                </div>
-            </div>
-            <div class="team-member">
-                <div style="background: linear-gradient(45deg, #111212, #1a1a2e); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-code" style="font-size: 4rem;"></i>
-                </div>
-                <div class="team-info">
-                    <h3>Programming Team</h3>
-                    <p>Software & Autonomous</p>
-                </div>
-            </div>
-            <div class="team-member">
-                <div style="background: linear-gradient(45deg,  #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-wrench" style="font-size: 4rem;"></i>
-                </div>
-                <div class="team-info">
-                    <h3>Mechanical Team</h3>
-                    <p>Mechanical Design</p>
-                </div>
-            </div>
-            <div class="team-member">
-                <div style="background: linear-gradient(45deg, #111112, #101010); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-cogs" style="font-size: 4rem;"></i>
-                </div>
-                <div class="team-info">
-                    <h3>Electrical Team</h3>
-                    <p>Wiring & Electronics</p>
-                </div>
-            </div>
-             <div class="team-member">
-                <div style="background: linear-gradient(45deg, #403e3e,#b6b1b0); height: 250px; display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-handshake" style="font-size: 4rem;"></i>
-                </div>
-                <div class="team-info">
-                    <h3>Outreach Team</h3>
-                    <p>Community Engagement</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Members Section -->
-<section id="members" class="container">
-    <h2><i class="fas fa-users"></i>Team members</h2>
+<!-- Team Members -->
+<section id="members" class="panel-alt reveal">
+  <div class="container">
+    <p class="eyebrow">The Roster</p>
+    <h2><i class="fas fa-users"></i>Team Members</h2>
     <div class="members-grid">
-
-        <div class="member-card"><img src="islam.png"><div class="member-info"><h3>MD Islam</h3><p>Programming & Outreach team <p>(TEAM CAPTAIN)</p></div></div>
-        <div class="member-card"><img src="abid2.png"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical & Electrical Team </p></div></div>
-        <div class="member-card"><img src="ariel.png"><div class="member-info"><h3>Ariel Ubri </h3><p>Design Team</p></div></div>
-        <div class="member-card"><img src="tamim2.png"><div class="member-info"><h3>Tamim Anzar</h3><p>Programming Team</p></div></div>
-        <div class="member-card"><img src="melani2.png"><div class="member-info"><h3>Melani Lasso </h3><p>Outreach Team</p></div></div>
-        <div class="member-card"><img src="anderson2 .png"><div class="member-info"><h3>Anderson Rocha</h3><p>Design Team</p></div></div>
-
-        <div class="member-card"><img src="hamed.png"><div class="member-info"><h3>Hamed sawadogo</h3><p>Mechanical Team </p></div></div>
-        <div class="member-card"><img src="Screen Shot 2026-04-20 at 8.10.57 PM.png"><div class="member-info"><h3>Sharifato Yembone</h3><p>Outreach Team</p></div></div>
-        <div class="member-card"><img src="roy.png"><div class="member-info"><h3>Roy Mkouonga </h3><p>Programming Team</p></div></div>
-        <div class="member-card"><img src="kodjo..png"><div class="member-info"><h3>Kodjo Hountondji</h3><p>Electrical Team</p></div></div>
-        <div class="member-card"><img src="tairo.png"><div class="member-info"><h3>Tairou Ouedraogo </h3><p>Electrical Team</p></div></div>
-        <div class="member-card"><img src="mamdou..png"><div class="member-info"><h3>Momadou Kpekpassi</h3><p>Mechanical Team</p></div></div>
-
+      <div class="member-card tframe"><img src="islam.png" alt="MD Islam"><div class="member-info"><h3>MD Islam</h3><p>Programming &amp; Outreach</p><span class="captain-flag">Team Captain</span></div></div>
+      <div class="member-card tframe"><img src="abid2.png" alt="Abid Ahmed"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical &amp; Electrical</p></div></div>
+      <div class="member-card tframe"><img src="ariel.png" alt="Ariel Ubri"><div class="member-info"><h3>Ariel Ubri</h3><p>Design Team</p></div></div>
+      <div class="member-card tframe"><img src="tamim2.png" alt="Tamim Anzar"><div class="member-info"><h3>Tamim Anzar</h3><p>Programming Team</p></div></div>
+      <div class="member-card tframe"><img src="melani2.png" alt="Melani Lasso"><div class="member-info"><h3>Melani Lasso</h3><p>Outreach Team</p></div></div>
+      <div class="member-card tframe"><img src="anderson2 .png" alt="Anderson Rocha"><div class="member-info"><h3>Anderson Rocha</h3><p>Design Team</p></div></div>
+      <div class="member-card tframe"><img src="hamed.png" alt="Hamed Sawadogo"><div class="member-info"><h3>Hamed Sawadogo</h3><p>Mechanical Team</p></div></div>
+      <div class="member-card tframe"><img src="Screen Shot 2026-04-20 at 8.10.57 PM.png" alt="Sharifato Yembone"><div class="member-info"><h3>Sharifato Yembone</h3><p>Outreach Team</p></div></div>
+      <div class="member-card tframe"><img src="roy.png" alt="Roy Mkouonga"><div class="member-info"><h3>Roy Mkouonga</h3><p>Programming Team</p></div></div>
+      <div class="member-card tframe"><img src="kodjo..png" alt="Kodjo Hountondji"><div class="member-info"><h3>Kodjo Hountondji</h3><p>Electrical Team</p></div></div>
+      <div class="member-card tframe"><img src="tairo.png" alt="Tairou Ouedraogo"><div class="member-info"><h3>Tairou Ouedraogo</h3><p>Electrical Team</p></div></div>
+      <div class="member-card tframe"><img src="mamdou..png" alt="Momadou Kpekpassi"><div class="member-info"><h3>Momadou Kpekpassi</h3><p>Mechanical Team</p></div></div>
     </div>
-     <!-- Mentors & Coaches Section -->
-<section id="mentors" class="container" style="background: #f8f9fa;">
-    <h2><i class="fas fa-chalkboard-teacher"></i>Mentors & Coaches</h2>
-
-    <div class="mentors-grid">
-       <!---coache--->
-<div class="mentor-card coach">
-            <img src="ms julie.png" >
-            <div class="mentor-info">
-                <h3>Julie Arcement</h3>
-                <p>Coach</p>
-            </div>
-        </div>
-          <!---coache--->
-<div class="mentor-card coach">
-            <img src="mr.cj.png">
-            <div class="mentor-info">
-                <h3>Charles Jones</h3>
-                <p>Asistant Coach</p>
-            </div>
-        </div>
-        <!-- Mentor -->
-        <div class="mentor-card mentor">
-            <img src="mr.oded.jpg" >
-            <div class="mentor-info">
-                <h3>Oded Shorer</h3>
-                <p>Mentor</p>
-            </div>
-        </div>
-
-       <!-- Mentor -->
-        <div class="mentor-card mentor">
-            <img src="mr.sandy.jpg" >
-            <div class="mentor-info">
-                <h3>Sandy Rodriguez</h3>
-                <p>Mentor</p>
-            </div>
-        </div>
-
-        <!-- Mentor -->
-        <div class="mentor-card mentor">
-            <img src="jessy.jpg" >
-            <div class="mentor-info">
-                <h3>Jessy Devonou</h3>
-                <p> Mentor/Alumnus</p>
-            </div>
-        </div>
-
-    </div>
-</section>
+  </div>
 </section>
 
 
- <!--connect-->
-   <section id="stem-connections" class="container" style="background: #f8f9fa;">
-<h2><i class="fas fa-globe"></i>Stem Connections</h2>
+<!-- Mentors & Coaches -->
+<section id="mentors" class="container reveal">
+  <p class="eyebrow">Behind The Build</p>
+  <h2><i class="fas fa-chalkboard-teacher"></i>Mentors &amp; Coaches</h2>
+  <div class="mentors-grid">
+    <div class="mentor-card tframe">
+      <img src="ms julie.png" alt="Julie Arcement">
+      <div class="mentor-info"><h3>Julie Arcement</h3><p>Coach</p></div>
+    </div>
+    <div class="mentor-card tframe">
+      <img src="mr.cj.png" alt="Charles Jones">
+      <div class="mentor-info"><h3>Charles Jones</h3><p>Assistant Coach</p></div>
+    </div>
+    <div class="mentor-card tframe">
+      <img src="mr.oded.jpg" alt="Oded Shorer">
+      <div class="mentor-info"><h3>Oded Shorer</h3><p>Mentor</p></div>
+    </div>
+    <div class="mentor-card tframe">
+      <img src="mr.sandy.jpg" alt="Sandy Rodriguez">
+      <div class="mentor-info"><h3>Sandy Rodriguez</h3><p>Mentor</p></div>
+    </div>
+    <div class="mentor-card tframe">
+      <img src="jessy.jpg" alt="Jessy Devonou">
+      <div class="mentor-info"><h3>Jessy Devonou</h3><p>Mentor / Alumnus</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEM Connections -->
+<section id="stem-connections" class="panel-alt reveal">
+  <div class="container">
+    <p class="eyebrow">Outreach</p>
+    <h2><i class="fas fa-globe"></i>STEM Connections</h2>
     <div class="stem-grid">
-    <!-- PSAL -->
-    <div class="stem-card">
-        <img src="psal_logo.jpg" alt="PSAL Logo" style="height: 140px; width: 120px; display: block; margin: 0 auto;">
+      <div class="stem-card tframe">
+        <img src="psal_logo.jpg" alt="PSAL Logo">
         <h3>Daniel Harris</h3>
-        <p><strong>(Senior Executive Director, PSAL NYC DOE)</strong></p>
-        <p>
-            We connected with Daniel Harris, Senior Executive Director of PSAL NYC DOE, who emphasized the importance of recognizing robotics and e-sports as competitive activities that require teamwork, strategy, and commitment.
-        </p>
-    </div>
-
-    <!-- BCC -->
-    <div class="stem-card">
-         <img src="BCC logo.png" alt="BCC Logo"style="height: 120px; width: 140px; display: block; margin: 0 auto;">
+        <span class="role">Senior Executive Director, PSAL NYC DOE</span>
+        <p>We connected with Daniel Harris, Senior Executive Director of PSAL NYC DOE, who emphasized the importance of recognizing robotics and e-sports as competitive activities that require teamwork, strategy, and commitment.</p>
+      </div>
+      <div class="stem-card tframe">
+        <img src="BCC logo.png" alt="BCC Logo">
         <h3>Dr. Larry D. Johnson Jr.</h3>
-        <p><strong>(President, Bronx Community College)</strong></p>
-        <p>
-           We met with Dr. Larry D. Johnson, Jr., President of Bronx Community College, where we discussed the importance of expanding engineering pathways within the CUNY system and increasing access to STEM education.
-        </p>
-    </div>
-
-    <!-- SUNY -->
-    <div class="stem-card">
-        <img src="suny logo.jpg" alt="SUNY Logo" style="height: 120px; width: 140px; display: block; margin: 0 auto;">
+        <span class="role">President, Bronx Community College</span>
+        <p>We met with Dr. Larry D. Johnson, Jr., President of Bronx Community College, where we discussed the importance of expanding engineering pathways within the CUNY system and increasing access to STEM education.</p>
+      </div>
+      <div class="stem-card tframe">
+        <img src="suny logo.jpg" alt="SUNY Logo">
         <h3>John B. King Jr.</h3>
-        <p><strong>(Chancellor of SUNY & Former U.S. Secretary of Education)</strong></p>
-        <p>
-            We had the opportunity to speak with John B. King, Jr., Chancellor of SUNY and former U.S. Secretary of Education. We learned how government policy can support and expand access to engineering programs for students.
-        </p>
-    </div>
-
-    <!-- ULTRA -->
-    <div class="stem-card">
-        <img src="ultra logo .png" alt="ULTRA Robotics Logo" style="height: 120px; width: 140px; display: block; margin: 0 auto;">
+        <span class="role">Chancellor of SUNY &amp; Former U.S. Secretary of Education</span>
+        <p>We had the opportunity to speak with John B. King, Jr., Chancellor of SUNY and former U.S. Secretary of Education. We learned how government policy can support and expand access to engineering programs for students.</p>
+      </div>
+      <div class="stem-card tframe">
+        <img src="ultra logo .png" alt="ULTRA Robotics Logo">
         <h3>Jon Miller Schwartz</h3>
-        <p><strong>(CEO of ULTRA Robotics)</strong></p>
-        <p>
-            We connected with Jon Miller Schwartz, Co-Founder and CEO of ULTRA Robotics, who shared his journey from FIRST Robotics Competition to leading a robotics company in New York City. He inspired us to use curiosity, hard work, and technical skills to pursue careers in STEM and entrepreneurship.
-        </p>
-    </div>
- <!-- COLUMBIA UNIVERCITY -->
-    <div class="stem-card">
-        <img src="columbia univercity outreach team.jpeg" alt="Columbia University Logo" style="height: 120px; width: 120px; display: block; margin: 0 auto;">
+        <span class="role">CEO of ULTRA Robotics</span>
+        <p>We connected with Jon Miller Schwartz, Co-Founder and CEO of ULTRA Robotics, who shared his journey from FIRST Robotics Competition to leading a robotics company in New York City. He inspired us to use curiosity, hard work, and technical skills to pursue careers in STEM and entrepreneurship.</p>
+      </div>
+      <div class="stem-card tframe">
+        <img src="columbia univercity outreach team.jpeg" alt="Columbia University Logo">
         <h3>Columbia University Engineering Department</h3>
-        <p></strong></p>
-        <p>
-            We visited Columbia University’s Engineering Department, where we explored the Makerspace lab and spoke with college students about their design processes. We also learned about student organizations such as the Columbia Space Initiative and CUFIRST.
-        </p>
-    </div>
-     <!-- COUNCIL MEMBAR -->
-    <div class="stem-card">
-        <img src="council member.jpg" alt="NYC Council Logo" style="height: 120px; width: 120px; display: block; margin: 0 auto;">
+        <span class="role">&nbsp;</span>
+        <p>We visited Columbia University's Engineering Department, where we explored the Makerspace lab and spoke with college students about their design processes. We also learned about student organizations such as the Columbia Space Initiative and CUFIRST.</p>
+      </div>
+      <div class="stem-card tframe">
+        <img src="council member.jpg" alt="NYC Council Logo">
         <h3>Althea Stevens</h3>
-        <p><strong>(NYC Council Member)</strong></p>
-        <p>
-            Our team participated in a special event with NYC Council Member Althea Stevens, who allocated $100,000 to the NYC FIRST STEM Center at the Andrew Freedman Home. This funding expands access to robotics, engineering, and advanced technology opportunities for students across the Bronx. During the announcement, members of our team demonstrated our robot and showcased our work, highlighting the impact of STEM programs on students like us.
-        </p>
+        <span class="role">NYC Council Member</span>
+        <p>Our team participated in a special event with NYC Council Member Althea Stevens, who allocated $100,000 to the NYC FIRST STEM Center at the Andrew Freedman Home. This funding expands access to robotics, engineering, and advanced technology opportunities for students across the Bronx. During the announcement, members of our team demonstrated our robot and showcased our work, highlighting the impact of STEM programs on students like us.</p>
+      </div>
     </div>
- </div>
+  </div>
 </section>
-<section id="partnerships" class="container partnerships-section">
 
-    <h2><i class="fas fa-handshake"></i> Partnerships & Sponsorships</h2>
 
-    <div class="partnerships-grid">
-
-        <!-- BELL -->
-        <div class="partnership-card">
-        <a href="https://bellorganization.org/" target="_blank" rel="noopener noreferrer">
-    <img src="bell organization.jpeg" alt="BELL Organization Logo" style="height: 120px; width: 180px; display: block; margin: 0 auto;">
-</a>
-            <div class="partnership-card-content">
-                <h3>BELL Organization</h3>
-                <p>
-                    The Steel Titans actively build partnerships that support both our team and the broader community. 
-                    We held a cookie fundraiser, where all proceeds were donated to the BELL Organization to support 
-                    STEM-focused after-school programs for underserved youth in the Bronx. Through this initiative, 
-                    we aimed not only to raise funds, but also to give back and expand access to STEM opportunities.
-
-                    Following this collaboration, the BELL Organization generously supported our team by donating 
-                    LEGO SPIKE Prime kits, strengthening our robotics program.
-                </p>
-            </div>
-        </div>
-
-        <!-- SCHOOL -->
-      <div class="partnership-card">
-    <a href="https://claremontihs.org/" target="_blank" rel="noopener noreferrer">
-    <img src="EmbeddedImage-960x720.jpg" alt="School Logo" style="height: 120px; width: 180px; display: block; margin: 0 auto;">
-</a>
-            <div class="partnership-card-content">
-                <h3>Claremont International High School</h3>
-                <p>
-                    Our school has been instrumental in supporting our team by helping with our budget, approving 
-                    fundraisers, and allowing us to showcase our robots at school events.
-
-                    Through this support, we continue growing in STEM, gaining real engineering experience, 
-                    and sharing our work with the school community.
-                </p>
-            </div>
-        </div>
-
-         <!-- Fabworks -->
-       <div class="partnership-card">
-    <a href="http://www.fabworks.com/" target="_blank" rel="noopener noreferrer">
-        <img src="fw logo.jpeg" alt="Fabworks Logo" style="height: 120px; width: 180px; display: block; margin: 0 auto;">
-    </a>
-
-    <div class="partnership-card-content">
+<!-- Partnerships -->
+<section id="partnerships" class="container reveal">
+  <p class="eyebrow">Backing Our Build</p>
+  <h2><i class="fas fa-handshake"></i>Partnerships &amp; Sponsorships</h2>
+  <div class="partnerships-grid">
+    <div class="partnership-card tframe">
+      <a href="https://bellorganization.org/" target="_blank" rel="noopener noreferrer">
+        <img src="bell organization.jpeg" alt="BELL Organization Logo">
+      </a>
+      <div class="partnership-card-content">
+        <h3>BELL Organization</h3>
+        <p>The Steel Titans actively build partnerships that support both our team and the broader community. We held a cookie fundraiser, where all proceeds were donated to the BELL Organization to support STEM-focused after-school programs for underserved youth in the Bronx. Through this initiative, we aimed not only to raise funds, but also to give back and expand access to STEM opportunities. Following this collaboration, the BELL Organization generously supported our team by donating LEGO SPIKE Prime kits, strengthening our robotics program.</p>
+      </div>
+    </div>
+    <div class="partnership-card tframe">
+      <a href="https://claremontihs.org/" target="_blank" rel="noopener noreferrer">
+        <img src="EmbeddedImage-960x720.jpg" alt="School Logo">
+      </a>
+      <div class="partnership-card-content">
+        <h3>Claremont International High School</h3>
+        <p>Our school has been instrumental in supporting our team by helping with our budget, approving fundraisers, and allowing us to showcase our robots at school events. Through this support, we continue growing in STEM, gaining real engineering experience, and sharing our work with the school community.</p>
+      </div>
+    </div>
+    <div class="partnership-card tframe">
+      <a href="http://www.fabworks.com/" target="_blank" rel="noopener noreferrer">
+        <img src="fw logo.jpeg" alt="Fabworks Logo">
+      </a>
+      <div class="partnership-card-content">
         <h3>Fabworks</h3>
-        <p>
-            Steel Titans established a partnership with Fabworks through our educational sponsorship outreach. Fabworks supports our team by providing resources and opportunities to assist with our robotics projects and STEM development. We greatly appreciate their commitment to supporting student robotics and engineering education.
-        </p>
+        <p>Steel Titans established a partnership with Fabworks through our educational sponsorship outreach. Fabworks supports our team by providing resources and opportunities to assist with our robotics projects and STEM development. We greatly appreciate their commitment to supporting student robotics and engineering education.</p>
+      </div>
     </div>
-</div>
+  </div>
 </section>
 
-<section id="mentorship" class="container mentorship-section" style="background:#f8f9fa;">
-
-    <h2><i class="fas fa-chalkboard-teacher"></i> Mentorship & Support</h2>
-
+<!-- Mentorship & Support -->
+<section id="mentorship" class="panel-alt reveal">
+  <div class="container">
+    <p class="eyebrow">Where We Build</p>
+    <h2><i class="fas fa-chalkboard-teacher"></i>Mentorship &amp; Support</h2>
     <div class="mentorship-grid">
-
-        <!-- NYC FIRST STEM Center -->
-        <div class="mentorship-card">
-            <img src="first_nyc_logo.jpeg" alt="NYC FIRST STEM Center Logo">
-
-            <div class="mentorship-card-content">
-                <h3>NYC FIRST STEM Center</h3>
-                <p>Our team is supported by dedicated mentors who guide us both technically and professionally throughout our robotics journey. At the NYC FIRST STEM Center, we are mentored by Mr. Shorer and Mr. Rodriguez. They work with us during weekly robotics classes, teaching us essential skills in design, building, and programming while encouraging teamwork, problem-solving, and innovation. We are also supported by Jessy Devonou, an alumnus of our team, who provides guidance in coding and helps us develop our engineering portfolio. As a former team member, she brings valuable experience and insight that strengthens our growth. It is part of the broader FIRST network, which inspires young people to become science and technology leaders. Through the support of our mentors and the resources provided by NYC FIRST, we continue to build not only our robot, but also our confidence, technical abilities, and leadership skills. This guidance fosters a strong foundation for our team to succeed in competitions, develop innovative solutions, and inspire the next generation of STEM leaders.</p>
-            </div>
+      <div class="mentorship-card tframe">
+        <img src="first_nyc_logo.jpeg" alt="NYC FIRST STEM Center Logo">
+        <div class="mentorship-card-content">
+          <h3>NYC FIRST STEM Center</h3>
+          <p>Our team is supported by dedicated mentors who guide us both technically and professionally throughout our robotics journey. At the NYC FIRST STEM Center, we are mentored by Mr. Shorer and Mr. Rodriguez. They work with us during weekly robotics classes, teaching us essential skills in design, building, and programming while encouraging teamwork, problem-solving, and innovation. We are also supported by Jessy Devonou, an alumnus of our team, who provides guidance in coding and helps us develop our engineering portfolio. As a former team member, she brings valuable experience and insight that strengthens our growth. It is part of the broader FIRST network, which inspires young people to become science and technology leaders. Through the support of our mentors and the resources provided by NYC FIRST, we continue to build not only our robot, but also our confidence, technical abilities, and leadership skills.</p>
         </div>
-
-        <!-- Andrew Freedman House -->
-        <div class="mentorship-card">
-            <img src="afh.png" alt="Andrew Freedman House Logo">
-
-            <div class="mentorship-card-content">
-                <h3>Andrew Freedman House</h3>
-                <p>At the NYC FIRST STEM Center at the Andrew Freedman Home, the STEM Center provides a unique environment for students to explore STEM disciplines through hands-on learning. The center offers access to advanced tools, collaborative workspaces, and mentorship opportunities that help students grow both technically and personally. Located in the historic Andrew Freedman Home, the STEM Center blends a rich cultural legacy with cutting-edge educational programs, giving students a creative space to innovate and collaborate on robotics, coding, and engineering projects.</p>
-            </div>
+      </div>
+      <div class="mentorship-card tframe">
+        <img src="afh.png" alt="Andrew Freedman House Logo">
+        <div class="mentorship-card-content">
+          <h3>Andrew Freedman House</h3>
+          <p>At the NYC FIRST STEM Center at the Andrew Freedman Home, the STEM Center provides a unique environment for students to explore STEM disciplines through hands-on learning. The center offers access to advanced tools, collaborative workspaces, and mentorship opportunities that help students grow both technically and personally. Located in the historic Andrew Freedman Home, the STEM Center blends a rich cultural legacy with cutting-edge educational programs, giving students a creative space to innovate and collaborate on robotics, coding, and engineering projects.</p>
         </div>
-
+      </div>
     </div>
-
+  </div>
 </section>
 
-        
-    <section id="collaboration" class="container">
 
-  <h2>
-  <img src="ftc-logo.png" alt="FTC LOGO" style="height: 140px; width: 180px; display: block; margin: 0 auto;">
-  Collaborating with FTC Teams
-</h2>
-    <div class="stem-grid">
-
-        <div class="stem-card">
-            <img src="2t 2.2.png" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>2 Train Robotics</h3>
-            <p><strong>FTC #24096</strong></p>
-            <p>We regularly collaborate with 2 Train Robotics at the NYC FIRST STEM Center.
-They helped us by teaching and assisting us with Mecanum drive coding.
-We also exchange robot parts, programming ideas, and design concepts to improve both teams’ performance.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="kenny donuts.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Kenny Donuts</h3>
-            <p><strong>FTC #20712</strong></p>
-            <p>Kenny Donuts has supported us with troubleshooting, programming help, and technical guidance.
-We also collaborate by sharing materials, resources, and build ideas to strengthen both teams.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="heights techies.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>South Bronx Team</h3>
-            <p><strong>FTC #11997</strong></p>
-            <p>The South Bronx Team has played a strong mentorship role.
-They helped us with robot building techniques and technical problem-solving, guiding us through mechanical and design challenges.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="sith seturn.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>SITH Saturn</h3>
-            <p><strong>FTC #26195</strong></p>
-            <p>Team SITH Saturn provided us with valuable feedback on our shooter system design.
-Their suggestions helped us improve accuracy, efficiency, and overall robot performance.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="mechatronics.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Mechatronics</h3>
-            <p><strong>FTC #13368</strong></p>
-            <p>Mechatronics shared advice on scoring multiple game elements efficiently.
-They also provided ideas that helped us improve strategy, teamwork, and competition performance.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="couch potato.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Couch Potatoes</h3>
-            <p><strong>FTC #24426</strong></p>
-            <p>We participated in an international FTC collaboration meeting hosted by Couch Potatoes.
-In this virtual event, 12 teams from 10 countries shared experiences, strategies, and competition insights.
-We gained global perspectives on robot design, teamwork, and competition strategy.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="cheetah x.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Cheetah-X</h3>
-            <p><strong>FTC #32940</strong></p>
-            <p>We supported Cheetah-X by providing robot parts and hands-on build assistance.
-Our goal was to help them strengthen their robot construction and progress in their build process.</p>
-        </div>
-
-        <div class="stem-card">
-            <img src="steel fangs 2.0.png" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Steel Fangs</h3>
-            <p><strong>FTC #32783</strong></p>
-            <p>We assisted Steel Fangs by providing materials and support during their robot build process.
-We helped them overcome mechanical challenges and improve their design. </p>
-        </div>
-
-        <div class="stem-card">
-            <img src="fruity pebbles.jpeg" style="height:140px; width:120px; display:block; margin:0 auto;">
-            <h3>Fruity Pebbles</h3>
-            <p><strong>FTC #32583</strong></p>
-            <p>supported Fruity Pebbles by sharing materials and helping them with robot assembly and construction guidance.
-This helped them continue building and improving their robot.</p>
-        </div>
-
+<!-- Collaboration -->
+<section id="collaboration" class="container reveal">
+  <p class="eyebrow">Peer Network</p>
+  <h2><img src="ftc-logo.png" alt="FTC Logo" style="height:100px; margin:0 auto 1rem;">Collaborating with FTC Teams</h2>
+  <div class="stem-grid">
+    <div class="stem-card tframe">
+      <img src="2t 2.2.png" alt="2 Train Robotics">
+      <h3>2 Train Robotics</h3>
+      <span class="role">FTC #24096</span>
+      <p>We regularly collaborate with 2 Train Robotics at the NYC FIRST STEM Center. They helped us by teaching and assisting us with Mecanum drive coding. We also exchange robot parts, programming ideas, and design concepts to improve both teams' performance.</p>
     </div>
-
-</section> 
-
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="container">
-        <h2><i class="fas fa-images"></i>Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="IMG_8448.jpg" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9627.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.35.59 AM.png" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 6.01.28 PM.png" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.22 AM.png" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.38 AM.png" alt="Gallery Image"></div>
-            <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.50 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.37.07 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.38.51 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.04 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.19 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.40.03 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.51.08 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.17 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.55 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.11 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.28 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.48 AM.png" alt="Gallery Image"></div>
-             <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.56.30 AM.png" alt="Gallery Image"></div>
-        </div>
-    </section>
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img src="" alt="Full Image">
+    <div class="stem-card tframe">
+      <img src="kenny donuts.jpeg" alt="Kenny Donuts">
+      <h3>Kenny Donuts</h3>
+      <span class="role">FTC #20712</span>
+      <p>Kenny Donuts has supported us with troubleshooting, programming help, and technical guidance. We also collaborate by sharing materials, resources, and build ideas to strengthen both teams.</p>
     </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container" style="background: #f8f9fa;">
-        <h2><i class="fas fa-envelope"></i>Contact Us</h2>
-        <div class="contact-grid">
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>steel-titans-28021@claremontihs.org</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Claremont International High School</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-instagram"></i>
-                    <a href="https://www.instagram.com/steel_titans_28021/" target="_blank">steel_titans_28021</a>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-form">
-                <form action="https://formspree.io/f/mykbjraj" method="POST">
-    <div class="form-group">
-        <input type="text" name="name" placeholder="Your Name" required>
+    <div class="stem-card tframe">
+      <img src="heights techies.jpeg" alt="South Bronx Team">
+      <h3>South Bronx Team</h3>
+      <span class="role">FTC #11997</span>
+      <p>The South Bronx Team has played a strong mentorship role. They helped us with robot building techniques and technical problem-solving, guiding us through mechanical and design challenges.</p>
     </div>
-    <div class="form-group">
-        <input type="email" name="email" placeholder="Your Email" required>
+    <div class="stem-card tframe">
+      <img src="sith seturn.jpeg" alt="SITH Saturn">
+      <h3>SITH Saturn</h3>
+      <span class="role">FTC #26195</span>
+      <p>Team SITH Saturn provided us with valuable feedback on our shooter system design. Their suggestions helped us improve accuracy, efficiency, and overall robot performance.</p>
     </div>
-    <div class="form-group">
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <div class="stem-card tframe">
+      <img src="mechatronics.jpeg" alt="Mechatronics">
+      <h3>Mechatronics</h3>
+      <span class="role">FTC #13368</span>
+      <p>Mechatronics shared advice on scoring multiple game elements efficiently. They also provided ideas that helped us improve strategy, teamwork, and competition performance.</p>
     </div>
-    <button type="submit" class="cta-button">Send Message</button>
-</form>
-            </div>
-        </div>
-    </section>
-   <!-- Logos Section -->
-<section id="partners" style="background: #f8f9fa; padding: 4rem 2rem; text-align: center;">
-    <h2><i></i></h2>
-
-    <div class="partners-logos" style="display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap; align-items: center; margin-top: 2rem;">
-
-        <!-- Claremont International High School -->
-        <a href="https://claremontihs.org/" target="_blank" rel="noopener noreferrer">
-            <img src="EmbeddedImage-960x720-removebg-preview.png"
-                 alt="Claremont International High School Logo"
-                 style="height: 120px;">
-        </a>
-
-        <!-- BELL Organization -->
-        <a href="https://bellorganization.org/" target="_blank" rel="noopener noreferrer">
-            <img src="bell_organization-removebg-preview.png"
-                 alt="BELL Organization Logo"
-                 style="height: 120px;">
-        </a>
-
-        <!-- Fabworks -->
-        <a href="https://www.fabworks.com/" target="_blank" rel="noopener noreferrer">
-            <img src="fw logo.jpeg"
-                 alt="Fabworks Logo"
-                 style="height: 120px;">
-        </a>
-
+    <div class="stem-card tframe">
+      <img src="couch potato.jpeg" alt="Couch Potatoes">
+      <h3>Couch Potatoes</h3>
+      <span class="role">FTC #24426</span>
+      <p>We participated in an international FTC collaboration meeting hosted by Couch Potatoes. In this virtual event, 12 teams from 10 countries shared experiences, strategies, and competition insights. We gained global perspectives on robot design, teamwork, and competition strategy.</p>
     </div>
+    <div class="stem-card tframe">
+      <img src="cheetah x.jpeg" alt="Cheetah-X">
+      <h3>Cheetah-X</h3>
+      <span class="role">FTC #32940</span>
+      <p>We supported Cheetah-X by providing robot parts and hands-on build assistance. Our goal was to help them strengthen their robot construction and progress in their build process.</p>
+    </div>
+    <div class="stem-card tframe">
+      <img src="steel fangs 2.0.png" alt="Steel Fangs">
+      <h3>Steel Fangs</h3>
+      <span class="role">FTC #32783</span>
+      <p>We assisted Steel Fangs by providing materials and support during their robot build process. We helped them overcome mechanical challenges and improve their design.</p>
+    </div>
+    <div class="stem-card tframe">
+      <img src="fruity pebbles.jpeg" alt="Fruity Pebbles">
+      <h3>Fruity Pebbles</h3>
+      <span class="role">FTC #32583</span>
+      <p>Supported Fruity Pebbles by sharing materials and helping them with robot assembly and construction guidance. This helped them continue building and improving their robot.</p>
+    </div>
+  </div>
 </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy;  Steel Titans FTC Team 28021. </p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer>
+<!-- Gallery -->
+<section id="gallery" class="panel-alt reveal">
+  <div class="container">
+    <p class="eyebrow">In The Shop</p>
+    <h2><i class="fas fa-images"></i>Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_8448.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9627.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.35.59 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 6.01.28 PM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.22 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.38 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.50 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.37.07 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.38.51 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.04 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.19 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.40.03 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.51.08 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.17 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.55 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.11 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.28 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.48 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.56.30 AM.png" alt="Gallery Image"></div>
+    </div>
+  </div>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-        // Hamburger menu toggle
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img src="" alt="Full Image">
+</div>
 
-        // Lightbox functionality
-        const galleryItems = document.querySelectorAll('.gallery-item img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox.querySelector('img');
+<!-- Contact -->
+<section id="contact" class="container reveal">
+  <p class="eyebrow">Reach Out</p>
+  <h2><i class="fas fa-envelope"></i>Contact Us</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Get In Touch</h3>
+      <div class="contact-item"><i class="fas fa-envelope"></i><span>steel-titans-28021@claremontihs.org</span></div>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Claremont International High School</span></div>
+      <div class="contact-item"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/steel_titans_28021/" target="_blank">steel_titans_28021</a></div>
+    </div>
+    <div class="contact-form">
+      <form action="https://formspree.io/f/mykbjraj" method="POST">
+        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+        <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                lightbox.style.display = 'flex';
-                lightboxImg.src = item.src;
-            });
-        });
+<!-- Partner Logos -->
+<section id="partners" class="panel-alt reveal">
+  <div class="container" style="text-align:center;">
+    <p class="eyebrow">Made Possible By</p>
+    <div class="partners-logos">
+      <a href="https://claremontihs.org/" target="_blank" rel="noopener noreferrer">
+        <img src="EmbeddedImage-960x720-removebg-preview.png" alt="Claremont International High School Logo">
+      </a>
+      <a href="https://bellorganization.org/" target="_blank" rel="noopener noreferrer">
+        <img src="bell_organization-removebg-preview.png" alt="BELL Organization Logo">
+      </a>
+      <a href="https://www.fabworks.com/" target="_blank" rel="noopener noreferrer">
+        <img src="fw logo.jpeg" alt="Fabworks Logo">
+      </a>
+    </div>
+  </div>
+</section>
 
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-        }
-        const dropdownToggle = document.querySelector('.dropdown > a');
-const dropdownMenu = document.querySelector('.dropdown-menu');
+<!-- Footer -->
+<footer>
+  <p class="tagline">Forged in the Bronx</p>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/steel_titans_28021/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>&copy; Steel Titans FTC Team 28021</p>
+</footer>
 
-dropdownToggle.addEventListener('click', function(e) {
-    if (window.innerWidth < 768) {
-        e.preventDefault();
-        dropdownMenu.classList.toggle('active');
+<script>
+  function toggleMenu(){
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+
+  // Lightbox
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = item.src;
+    });
+  });
+  function closeLightbox(){ lightbox.style.display = 'none'; }
+
+  // Mobile dropdown
+  const dropdownToggle = document.querySelector('.dropdown > a');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownToggle.addEventListener('click', function(e){
+    if (window.innerWidth < 768){
+      e.preventDefault();
+      dropdownMenu.classList.toggle('active');
     }
-});
-    </script>
+  });
+
+  // Graceful fallback for missing image files
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function(){
+      if (this.dataset.fallbackApplied) return;
+      this.dataset.fallbackApplied = '1';
+      const label = this.getAttribute('alt') || this.getAttribute('src') || 'image';
+      const box = document.createElement('div');
+      box.className = 'img-fallback';
+      box.style.height = this.offsetHeight ? this.offsetHeight + 'px' : (this.style.height || '');
+      box.innerHTML = '<i class="fas fa-image"></i><span>' + label + '</span>';
+      this.replaceWith(box);
+    }, { once:true });
+  });
+
+  // Scroll reveal + gauge fill
+  const revealEls = document.querySelectorAll('.reveal');
+  const gauge = document.querySelector('.gauge-fill');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        if (entry.target.id === 'about' && gauge){
+          gauge.style.width = gauge.dataset.fill + '%';
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
 </body>
 </html>
