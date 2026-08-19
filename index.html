@@ -360,31 +360,6 @@ nav{
     filter .5s ease;
 }
 
-.gallery-item::after{
-  content:"\f00e";
-  font-family:"Font Awesome 6 Free";
-  font-weight:900;
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%, -50%) scale(.7);
-  width:54px;
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:rgba(10,13,18,.82);
-  border:1px solid rgba(53,208,196,.7);
-  color:var(--circuit);
-  font-size:1rem;
-  opacity:0;
-  z-index:3;
-  transition:
-    opacity .3s ease,
-    transform .3s ease;
-  box-shadow:0 0 30px rgba(53,208,196,.18);
-}
 
 .gallery-item:hover{
   transform:translateY(-5px);
@@ -403,10 +378,6 @@ nav{
   filter:brightness(.7) saturate(1.1);
 }
 
-.gallery-item:hover::after{
-  opacity:1;
-  transform:translate(-50%, -50%) scale(1);
-}
 
 /* ---------- fullscreen gallery lightbox ---------- */
 
