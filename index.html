@@ -55,6 +55,49 @@ img{max-width:100%; height:auto; display:block;}
 
 a{color:inherit;}
 
+
+   /* ---------- custom cursor ---------- */
+
+body{
+  cursor:none;
+}
+
+.custom-cursor{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:var(--circuit);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:999999;
+
+  transform:translate(-50%, -50%);
+
+  box-shadow:
+    0 0 10px var(--circuit),
+    0 0 25px rgba(53,208,196,.5);
+}
+
+.cursor-ring{
+  position:fixed;
+  width:32px;
+  height:32px;
+
+  border:1px solid rgba(53,208,196,.6);
+  border-radius:50%;
+
+  pointer-events:none;
+  z-index:999998;
+
+  transform:translate(-50%, -50%);
+
+  transition:
+    width .2s ease,
+    height .2s ease,
+    border-color .2s ease;
+}
+
+
 /* ---------- background circuitry ---------- */
 body::before{
   content:"";
@@ -638,6 +681,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </style>
 </head>
 <body>
+   <div class="custom-cursor"></div>
+<div class="cursor-ring"></div>
 
 <header>
   <nav>
@@ -1118,6 +1163,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 
     const selectedImage = galleryItems[currentIndex];
 
+     
     /*
      * Use the original source instead of a resized/cropped version.
      */
@@ -1321,6 +1367,35 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     console.error('reveal setup failed, forcing all content visible', e);
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
+</script>
+   <script>
+const cursor = document.querySelector('.custom-cursor');
+const ring = document.querySelector('.cursor-ring');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+</script>
+   <script>
+document.querySelectorAll('a, button, .gallery-item').forEach(el => {
+
+  el.addEventListener('mouseenter', () => {
+    ring.style.width = '50px';
+    ring.style.height = '50px';
+    ring.style.borderColor = 'var(--spark)';
+  });
+
+  el.addEventListener('mouseleave', () => {
+    ring.style.width = '32px';
+    ring.style.height = '32px';
+    ring.style.borderColor = 'rgba(53,208,196,.6)';
+  });
+
+});
 </script>
 </body>
 </html>
