@@ -15,21 +15,21 @@
    as a coordinate tag. HUD viewfinder corners = robot vision.
    ============================================================ */
 :root{
-  --void:        #0a0d12;
-  --panel:       #10151c;
-  --panel-2:     #161c25;
-  --steel:       #3d4650;
-  --steel-line:  #2a323c;
-  --spark:       #ff5b1f;
-  --spark-dim:   #b8410f;
-  --circuit:     #35d0c4;
-  --ink:         #eef1f4;
-  --ink-dim:     #9aa5b1;
-  --ink-faint:   #5c6773;
+  --void: #0a0d12;
+  --panel: #10151c;
+  --panel-2: #161c25;
+  --steel: #3d4650;
+  --steel-line: #2a323c;
+  --spark: #ff5b1f;
+  --spark-dim: #b8410f;
+  --circuit: #35d0c4;
+  --ink: #eef1f4;
+  --ink-dim: #9aa5b1;
+  --ink-faint: #5c6773;
 
   --display: 'Rajdhani', sans-serif;
-  --body:    'Inter', sans-serif;
-  --mono:    'JetBrains Mono', monospace;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
 
   --radius: 4px;
 }
@@ -122,7 +122,7 @@ h2 i{color:var(--spark); margin-right:.7rem; font-size:.85em;}
 }
 .tframe::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
 .tframe::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
-.tframe:hover{transform:translateY(-6px); border-color:var(--steel);}
+.tframe:hover{transform:translateY(-6px); border-color:var(--steel); box-shadow:0 12px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(255,91,31,.08);}
 .tframe:hover::before, .tframe:hover::after{opacity:1;}
 
 .tag{
@@ -152,7 +152,7 @@ nav{
   color:var(--ink);
 }
 .logo img{height:38px;}
-.logo .idnum{color:var(--spark); font-family:var(--mono); font-size:.85rem; letter-spacing:.1em;}
+.logo .idnum{color:var(--spark); font-family:var(--mono); font-size:.85rem; letter-spacing:.1em; text-shadow:0 0 12px rgba(255,91,31,.5);}
 
 .nav-links{display:flex; list-style:none; gap:1.6rem; align-items:center;}
 .nav-links a{
@@ -197,6 +197,14 @@ nav{
   background:
     linear-gradient(180deg, rgba(10,13,18,.55) 0%, rgba(10,13,18,.75) 55%, var(--void) 100%);
 }
+.hero::after{
+  content:"";
+  position:absolute; left:0; right:0; height:2px; z-index:2;
+  background:linear-gradient(90deg, transparent, var(--circuit), transparent);
+  opacity:.6;
+  animation:scan 6s linear infinite;
+}
+@keyframes scan{0%{top:0%;}100%{top:100%;}}
 .hero-content{
   position:relative; z-index:1; text-align:center; color:var(--ink);
   padding:2rem;
@@ -229,7 +237,7 @@ nav{
   font-size:1.05rem; clip-path:polygon(0 0,calc(100% - 14px) 0,100% 100%,14px 100%);
   transition:all .3s ease;
 }
-.cta-button:hover{background:#ff7440; transform:translateY(-3px);}
+.cta-button:hover{background:#ff7440; transform:translateY(-3px); box-shadow:0 10px 30px rgba(255,91,31,.35);}
 
 .scroll-cue{
   position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
@@ -316,6 +324,7 @@ nav{
 .gallery-item{
   position:relative; overflow:hidden; border-radius:var(--radius);
   border:1px solid var(--steel-line); cursor:pointer;
+  background:var(--panel-2); min-height:220px;
 }
 .gallery-item img{height:220px; width:100%; object-fit:cover; transition:transform .45s ease, filter .45s ease; background:var(--panel-2);}
 .gallery-item img.img-missing{
@@ -324,25 +333,49 @@ nav{
 }
 .img-fallback{
   height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:.6rem; background:var(--panel-2); color:var(--ink-faint);
+  gap:.6rem; background:var(--panel-2); color:var(--ink-dim);
   font-family:var(--mono); font-size:.68rem; letter-spacing:.05em; text-align:center; padding:.5rem;
 }
-.img-fallback i{font-size:1.4rem; color:var(--steel);}
+.img-fallback i{font-size:1.4rem; color:var(--circuit);}
 .gallery-item::after{
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, transparent 60%, rgba(10,13,18,.85));
   opacity:0; transition:opacity .35s ease;
 }
-
 .gallery-item:hover img{transform:scale(1.08); filter:saturate(1.1);}
 .gallery-item:hover::after{opacity:1;}
 
 .lightbox{
   display:none; position:fixed; inset:0; z-index:2000;
-  background:rgba(5,7,10,.95); justify-content:center; align-items:center;
+  background:rgba(5,7,10,.97); justify-content:center; align-items:center;
 }
-.lightbox img{max-width:90%; max-height:90%; border-radius:6px; border:1px solid var(--steel-line);}
-
+.lightbox-inner{position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center;}
+.lightbox img{
+  max-width:88%; max-height:82%; border-radius:6px; border:1px solid var(--steel-line);
+  box-shadow:0 0 60px rgba(53,208,196,.15), 0 0 120px rgba(255,91,31,.1);
+  transform:scale(.92); opacity:0; transition:transform .3s ease, opacity .3s ease;
+}
+.lightbox.open img{transform:scale(1); opacity:1;}
+.lightbox-close, .lightbox-nav{
+  position:absolute; border:1px solid var(--steel-line); border-radius:50%;
+  background:var(--panel); color:var(--ink);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  transition:border-color .25s ease, color .25s ease, transform .25s ease;
+}
+.lightbox-close{top:1.2rem; right:1.5rem; width:44px; height:44px; font-size:1.3rem;}
+.lightbox-close:hover{border-color:var(--spark); color:var(--spark);}
+.lightbox-nav{top:50%; transform:translateY(-50%); width:48px; height:48px; font-size:1.2rem;}
+.lightbox-nav:hover{border-color:var(--circuit); color:var(--circuit); transform:translateY(-50%) scale(1.08);}
+.lightbox-prev{left:1rem;}
+.lightbox-next{right:1rem;}
+.lightbox-counter{
+  position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%);
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.15em; color:var(--ink-dim);
+}
+@media (max-width:600px){
+  .lightbox-nav{width:38px; height:38px; font-size:1rem;}
+  .lightbox-close{width:38px; height:38px; font-size:1.1rem;}
+}
 
 /* ---------- contact ---------- */
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
@@ -382,7 +415,9 @@ footer .tagline{font-family:var(--mono); color:var(--ink-faint); font-size:.75re
 footer p{color:var(--ink-faint); font-size:.85rem;}
 
 /* ---------- scroll reveal ---------- */
-.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.reveal{opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease;}
+.reveal.js-armed{opacity:0; transform:translateY(24px);}
+.reveal.js-armed.in{opacity:1; transform:translateY(0);}
 .reveal.in{opacity:1; transform:translateY(0);}
 
 /* ---------- responsive ---------- */
@@ -407,6 +442,11 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 @media (max-width:600px){
   .stem-grid{grid-template-columns:1fr;}
   section{padding:3.5rem 0;}
+  .gallery-grid{grid-template-columns:repeat(2, 1fr); gap:.7rem;}
+  .gallery-item img, .gallery-item .img-fallback{height:140px;}
+}
+@media (max-width:400px){
+  .gallery-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -480,7 +520,6 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
   </div>
 </section>
 
-
 <!-- Awards -->
 <section id="awards" class="panel-alt reveal">
   <div class="container">
@@ -545,8 +584,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     <p class="eyebrow">The Roster</p>
     <h2><i class="fas fa-users"></i>Team Members</h2>
     <div class="members-grid">
-      <div class="member-card tframe"><img src="abid2.png" alt="Abid Ahmed"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical &amp; Electrical</p><span class="captain-flag">Team Captain</span></div></div>
-       <div class="member-card tframe"><img src="Islam.png" alt="MD Islam"><div class="member-info"><h3>MD Islam</h3><p>Programming &amp; Outreach</p><span class="captain-flag">Team Co-Captain</span></div></div>
+      <div class="member-card tframe"><img src="islam.png" alt="MD Islam"><div class="member-info"><h3>MD Islam</h3><p>Programming &amp; Outreach</p><span class="captain-flag">Team Captain</span></div></div>
+      <div class="member-card tframe"><img src="abid2.png" alt="Abid Ahmed"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical &amp; Electrical</p></div></div>
       <div class="member-card tframe"><img src="ariel.png" alt="Ariel Ubri"><div class="member-info"><h3>Ariel Ubri</h3><p>Design Team</p></div></div>
       <div class="member-card tframe"><img src="tamim2.png" alt="Tamim Anzar"><div class="member-info"><h3>Tamim Anzar</h3><p>Programming Team</p></div></div>
       <div class="member-card tframe"><img src="melani2.png" alt="Melani Lasso"><div class="member-info"><h3>Melani Lasso</h3><p>Outreach Team</p></div></div>
@@ -560,7 +599,6 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     </div>
   </div>
 </section>
-
 
 <!-- Mentors & Coaches -->
 <section id="mentors" class="container reveal">
@@ -615,7 +653,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
         <p>We had the opportunity to speak with John B. King, Jr., Chancellor of SUNY and former U.S. Secretary of Education. We learned how government policy can support and expand access to engineering programs for students.</p>
       </div>
       <div class="stem-card tframe">
-        <img src="ultra.png" alt="ULTRA Robotics Logo">
+        <img src="ultra logo .png" alt="ULTRA Robotics Logo">
         <h3>Jon Miller Schwartz</h3>
         <span class="role">CEO of ULTRA Robotics</span>
         <p>We connected with Jon Miller Schwartz, Co-Founder and CEO of ULTRA Robotics, who shared his journey from FIRST Robotics Competition to leading a robotics company in New York City. He inspired us to use curiosity, hard work, and technical skills to pursue careers in STEM and entrepreneurship.</p>
@@ -635,7 +673,6 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     </div>
   </div>
 </section>
-
 
 <!-- Partnerships -->
 <section id="partnerships" class="container reveal">
@@ -695,7 +732,6 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     </div>
   </div>
 </section>
-
 
 <!-- Collaboration -->
 <section id="collaboration" class="container reveal">
@@ -765,43 +801,49 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     <p class="eyebrow">In The Shop</p>
     <h2><i class="fas fa-images"></i>Gallery</h2>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_8448.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9627.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.35.59 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 6.01.28 PM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.22 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.38 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.50 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.37.07 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.38.51 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.04 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.19 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.40.03 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.51.08 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.17 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.55 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.11 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.28 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.48 AM.png" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.56.30 AM.png" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="IMG_0065.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_1006.jpeg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_1006.jpg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_1007.jpeg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9667.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9622.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_20260215_181630_719.jpg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_20260228_213613_545.jpg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_8448.jpg" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9627.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9635.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9661.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="IMG_9662.JPG" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.35.59 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 6.01.28 PM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.22 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.38 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.36.50 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.37.07 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.38.51 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.04 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.39.19 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.40.03 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.51.08 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.17 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.52.55 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.11 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.28 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.53.48 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="Screen Shot 2026-04-02 at 1.56.30 AM.png" alt="Gallery Image" loading="lazy" decoding="async"></div>
     </div>
   </div>
 </section>
 
 <!-- Lightbox -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <img src="" alt="Full Image">
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-inner">
+    <div class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></div>
+    <div class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></div>
+    <img src="" alt="Full Image">
+    <div class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
 </div>
 
 <!-- Contact -->
@@ -857,60 +899,129 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </footer>
 
 <script>
-  function toggleMenu(){
-    document.querySelector('.nav-links').classList.toggle('active');
-  }
+  // Every feature below is isolated in its own try/catch.
+  // A failure in one (lightbox, dropdown, etc.) can never block another.
 
-  // Lightbox
-  const galleryItems = document.querySelectorAll('.gallery-item img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightboxImg.src = item.src;
-    });
-  });
-  function closeLightbox(){ lightbox.style.display = 'none'; }
-
-  // Mobile dropdown
-  const dropdownToggle = document.querySelector('.dropdown > a');
-  const dropdownMenu = document.querySelector('.dropdown-menu');
-  dropdownToggle.addEventListener('click', function(e){
-    if (window.innerWidth < 768){
-      e.preventDefault();
-      dropdownMenu.classList.toggle('active');
+  try {
+    function toggleMenu(){
+      document.querySelector('.nav-links').classList.toggle('active');
     }
-  });
+    window.toggleMenu = toggleMenu;
+  } catch(e){ console.error('menu toggle failed', e); }
 
-  // Graceful fallback for missing image files
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('error', function(){
-      if (this.dataset.fallbackApplied) return;
-      this.dataset.fallbackApplied = '1';
-      const label = this.getAttribute('alt') || this.getAttribute('src') || 'image';
-      const box = document.createElement('div');
-      box.className = 'img-fallback';
-      box.style.height = this.offsetHeight ? this.offsetHeight + 'px' : (this.style.height || '');
-      box.innerHTML = '<i class="fas fa-image"></i><span>' + label + '</span>';
-      this.replaceWith(box);
-    }, { once:true });
-  });
+  try {
+    // Lightbox — full-screen viewer with prev/next, keyboard nav, counter
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
 
-  // Scroll reveal + gauge fill
-  const revealEls = document.querySelectorAll('.reveal');
-  const gauge = document.querySelector('.gauge-fill');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        if (entry.target.id === 'about' && gauge){
-          gauge.style.width = gauge.dataset.fill + '%';
-        }
-      }
+    function showImage(i){
+      currentIndex = (i + galleryItems.length) % galleryItems.length;
+      lightboxImg.src = galleryItems[currentIndex].src;
+      lightboxImg.alt = galleryItems[currentIndex].alt;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryItems.length;
+    }
+    function openLightbox(i){
+      showImage(i);
+      lightbox.style.display = 'flex';
+      requestAnimationFrame(() => lightbox.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      setTimeout(() => { lightbox.style.display = 'none'; }, 200);
+      document.body.style.overflow = '';
+    }
+
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.classList.contains('lightbox-inner')) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display !== 'flex') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
+  } catch(e){ console.error('lightbox setup failed', e); }
+
+  try {
+    // Mobile dropdown
+    const dropdownToggle = document.querySelector('.dropdown > a');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    if (dropdownToggle && dropdownMenu){
+      dropdownToggle.addEventListener('click', function(e){
+        if (window.innerWidth < 768){
+          e.preventDefault();
+          dropdownMenu.classList.toggle('active');
+        }
+      });
+    }
+  } catch(e){ console.error('dropdown setup failed', e); }
+
+  try {
+    // Graceful fallback for missing image files
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', function(){
+        if (this.dataset.fallbackApplied) return;
+        this.dataset.fallbackApplied = '1';
+        const label = this.getAttribute('alt') || this.getAttribute('src') || 'image';
+        const box = document.createElement('div');
+        box.className = 'img-fallback';
+        box.style.height = this.offsetHeight ? this.offsetHeight + 'px' : (this.style.height || '');
+        box.innerHTML = '<i class="fas fa-image"></i><span>' + label + '</span>';
+        this.replaceWith(box);
+      }, { once:true });
+    });
+  } catch(e){ console.error('image fallback setup failed', e); }
+
+  try {
+    // Scroll reveal + gauge fill — opt-in only. Content is visible by
+    // default in CSS; this just layers a fade-up animation on top when
+    // supported. If IntersectionObserver is missing or throws, content
+    // simply stays visible (no js-armed class ever gets added).
+    const revealEls = document.querySelectorAll('.reveal');
+    const gauge = document.querySelector('.gauge-fill');
+
+    if ('IntersectionObserver' in window){
+      revealEls.forEach(el => el.classList.add('js-armed'));
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting){
+            entry.target.classList.add('in');
+            if (entry.target.id === 'about' && gauge){
+              gauge.style.width = gauge.dataset.fill + '%';
+            }
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+      revealEls.forEach(el => io.observe(el));
+
+      // Safety net: if anything ever fails to trigger (older/quirky
+      // mobile browsers, in-app browsers, timing edge cases), force
+      // every section visible after 2.5s no matter what.
+      setTimeout(() => {
+        revealEls.forEach(el => el.classList.add('in'));
+        if (gauge && !gauge.style.width) gauge.style.width = gauge.dataset.fill + '%';
+      }, 2500);
+    } else if (gauge){
+      // No IntersectionObserver support at all — just fill the gauge.
+      gauge.style.width = gauge.dataset.fill + '%';
+    }
+  } catch(e){
+    console.error('reveal setup failed, forcing all content visible', e);
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
 </script>
 </body>
 </html>
