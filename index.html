@@ -56,7 +56,7 @@ img{max-width:100%; height:auto; display:block;}
 a{color:inherit;}
 
 
-   /* ---------- custom cursor ---------- */
+ /* ---------- logo cursor ---------- */
 
 body{
   cursor:none;
@@ -64,38 +64,29 @@ body{
 
 .custom-cursor{
   position:fixed;
-  width:8px;
-  height:8px;
-  background:var(--circuit);
-  border-radius:50%;
+  width:45px;
+  height:45px;
   pointer-events:none;
   z-index:999999;
 
   transform:translate(-50%, -50%);
 
-  box-shadow:
-    0 0 10px var(--circuit),
-    0 0 25px rgba(53,208,196,.5);
-}
-
-.cursor-ring{
-  position:fixed;
-  width:32px;
-  height:32px;
-
-  border:1px solid rgba(53,208,196,.6);
-  border-radius:50%;
-
-  pointer-events:none;
-  z-index:999998;
-
-  transform:translate(-50%, -50%);
-
   transition:
     width .2s ease,
-    height .2s ease,
-    border-color .2s ease;
+    height .2s ease;
 }
+
+.custom-cursor img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+
+  filter:
+    drop-shadow(0 0 6px rgba(53,208,196,.8))
+    drop-shadow(0 0 15px rgba(53,208,196,.4));
+}
+
 
 
 /* ---------- background circuitry ---------- */
@@ -681,8 +672,10 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </style>
 </head>
 <body>
-   <div class="custom-cursor"></div>
-<div class="cursor-ring"></div>
+   <div class="custom-cursor">
+  <img src="New_Steel_titans_logo-removebg-preview-removebg-preview (1).png" alt="">
+</div>
+
 
 <header>
   <nav>
