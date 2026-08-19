@@ -320,7 +320,6 @@ nav{
 .mentorship-card-content p, .partnership-card-content p{color:var(--ink-dim); font-size:.93rem;}
 
 /* ---------- gallery ---------- */
-/* ---------- gallery ---------- */
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
@@ -1126,49 +1125,155 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
     window.toggleMenu = toggleMenu;
   } catch(e){ console.error('menu toggle failed', e); }
 
-  try {
-    // Lightbox — full-screen viewer with prev/next, keyboard nav, counter
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-item img'));
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-    const lightboxCounter = document.getElementById('lightboxCounter');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-    let currentIndex = 0;
+ try {
+  const galleryItems = Array.from(
+    document.querySelectorAll('.gallery-item img')
+  );
 
-    function showImage(i){
-      currentIndex = (i + galleryItems.length) % galleryItems.length;
-      lightboxImg.src = galleryItems[currentIndex].src;
-      lightboxImg.alt = galleryItems[currentIndex].alt;
-      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryItems.length;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+
+  let currentIndex = 0;
+
+  function showImage(index){
+    if (!galleryItems.length) return;
+
+    currentIndex =
+      (index + galleryItems.length) % galleryItems.length;
+
+    const selectedImage = galleryItems[currentIndex];
+
+    /*
+     * Use the original source instead of a resized/cropped version.
+     */
+    lightboxImg.src = selectedImage.getAttribute('src');
+    lightboxImg.alt = selectedImage.getAttribute('alt') || 'Steel Titans Gallery Image';
+
+    lightboxCounter.textContent =
+      `${currentIndex + 1} / ${galleryItems.length}`;
+  }
+
+  function openLightbox(index){
+    showImage(index);
+
+    lightbox.style.display = 'flex';
+
+    /*
+     * Force the browser to register display:flex before
+     * starting the fade/scale animation.
+     */
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        lightbox.classList.add('open');
+      });
+    });
+
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+
+    setTimeout(() => {
+      lightbox.style.display = 'none';
+    }, 250);
+
+    document.body.style.overflow = '';
+  }
+
+  function nextImage(){
+    showImage(currentIndex + 1);
+  }
+
+  function previousImage(){
+    showImage(currentIndex - 1);
+  }
+
+  /* Open gallery image */
+  galleryItems.forEach((image, index) => {
+    image.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openLightbox(index);
+    });
+  });
+
+  /* Buttons */
+  lightboxClose.addEventListener('click', function(e){
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  lightboxPrev.addEventListener('click', function(e){
+    e.stopPropagation();
+    previousImage();
+  });
+
+  lightboxNext.addEventListener('click', function(e){
+    e.stopPropagation();
+    nextImage();
+  });
+
+  /*
+   * Clicking the dark background closes the viewer.
+   * Clicking the actual image does NOT close it.
+   */
+  lightbox.addEventListener('click', function(e){
+    if (
+      e.target === lightbox ||
+      e.target.classList.contains('lightbox-inner')
+    ){
+      closeLightbox();
     }
-    function openLightbox(i){
-      showImage(i);
-      lightbox.style.display = 'flex';
-      requestAnimationFrame(() => lightbox.classList.add('open'));
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox(){
-      lightbox.classList.remove('open');
-      setTimeout(() => { lightbox.style.display = 'none'; }, 200);
-      document.body.style.overflow = '';
+  });
+
+  /* Keyboard controls */
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('open')) return;
+
+    if (e.key === 'Escape'){
+      closeLightbox();
     }
 
-    galleryItems.forEach((item, i) => {
-      item.addEventListener('click', () => openLightbox(i));
-    });
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
-    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.classList.contains('lightbox-inner')) closeLightbox(); });
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display !== 'flex') return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-    });
-  } catch(e){ console.error('lightbox setup failed', e); }
+    if (e.key === 'ArrowLeft'){
+      previousImage();
+    }
+
+    if (e.key === 'ArrowRight'){
+      nextImage();
+    }
+  });
+
+  /*
+   * Swipe support for phones.
+   */
+  let touchStartX = 0;
+
+  lightbox.addEventListener('touchstart', function(e){
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive:true });
+
+  lightbox.addEventListener('touchend', function(e){
+    const touchEndX = e.changedTouches[0].screenX;
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) < 50) return;
+
+    if (difference > 0){
+      nextImage();
+    } else {
+      previousImage();
+    }
+  }, { passive:true });
+
+} catch(e){
+  console.error('Gallery lightbox setup failed:', e);
+}
+
 
   try {
     // Mobile dropdown
@@ -1195,7 +1300,13 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
         box.className = 'img-fallback';
         box.style.height = this.offsetHeight ? this.offsetHeight + 'px' : (this.style.height || '');
         box.innerHTML = '<i class="fas fa-image"></i><span>' + label + '</span>';
-        this.replaceWith(box);
+       if (this.closest('.gallery-item')) {
+  this.parentElement.appendChild(box);
+  this.style.display = 'none';
+} else {
+  this.replaceWith(box);
+}
+
       }, { once:true });
     });
   } catch(e){ console.error('image fallback setup failed', e); }
