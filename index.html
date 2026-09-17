@@ -303,6 +303,36 @@ nav{
 .about-copy p{color:var(--ink-dim); margin-bottom:1.1rem; font-size:1.02rem;}
 .about-copy strong{color:var(--ink);}
 
+/* ---------- live stat rows (FTSee, inside stat-block) ---------- */
+.stat-block .rank-rows{margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--steel-line);}
+.stat-block .rank-row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.85rem;}
+.stat-block .rank-row:last-child{margin-bottom:0;}
+.stat-block .rank-row .rank-label{font-family:var(--mono); font-size:.72rem; color:var(--ink-dim); letter-spacing:.04em; text-transform:uppercase;}
+.stat-block .rank-row .rank-value{font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--ink);}
+.stat-block .rank-row .rank-total{font-family:var(--mono); font-weight:500; font-size:.72rem; color:var(--ink-faint);}
+.stat-block .rank-row .rank-pct{font-family:var(--mono); font-size:.7rem; color:var(--circuit); margin-left:.4rem;}
+.stat-block .livestats-source{margin-top:1.1rem; text-align:left; font-size:.68rem;}
+
+/* ---------- live stats (FTSee) ---------- */
+.livestats-grid{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:1.4rem;
+}
+.livestat-card{
+  padding:1.8rem 1.4rem; text-align:center;
+}
+.livestat-num{
+  font-family:var(--display); font-weight:700; font-size:2.6rem; color:var(--spark); line-height:1;
+}
+.livestat-card.opr .livestat-num{color:var(--circuit);}
+.livestat-label{font-family:var(--mono); font-size:.72rem; color:var(--ink-dim); letter-spacing:.08em; text-transform:uppercase; margin:.6rem 0 .5rem;}
+.livestat-sub{font-family:var(--mono); font-size:.78rem; color:var(--ink-faint);}
+.livestats-source{
+  text-align:center; margin-top:1.6rem; font-family:var(--mono); font-size:.72rem;
+  color:var(--ink-faint); letter-spacing:.05em;
+}
+.livestats-source a{color:var(--circuit); text-decoration:none; border-bottom:1px dotted var(--circuit);}
+.livestats-source a:hover{color:var(--ink);}
+
 /* ---------- awards ---------- */
 .awards-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.6rem;}
 .award-card{
@@ -647,6 +677,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
   .stat-block{position:static;}
   .stem-grid{grid-template-columns:repeat(2,1fr);}
   .mentorship-grid, .partnerships-grid{grid-template-columns:1fr;}
+  .livestats-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media (max-width:768px){
   .contact-grid{grid-template-columns:1fr;}
@@ -665,6 +696,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
   section{padding:3.5rem 0;}
   .gallery-grid{grid-template-columns:repeat(2, 1fr); gap:.7rem;}
   .gallery-item img, .gallery-item .img-fallback{height:140px;}
+  .livestats-grid{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:400px){
   .gallery-grid{grid-template-columns:1fr;}
@@ -730,11 +762,25 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
   <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
   <div class="about-grid">
     <div class="stat-block">
-      <span class="tag">Live Standing</span>
-      <div class="stat-num">13<span>/149</span></div>
-      <div class="stat-label">Current NYC Team Ranking</div>
+      <span class="tag">Live Standing · Powered by FTSee</span>
+      <div class="stat-num">92<span>&nbsp;npOPR</span></div>
+      <div class="stat-label">Season Performance Rating</div>
       <div class="gauge"><div class="gauge-fill" data-fill="91"></div></div>
-      <p style="font-family:var(--mono); font-size:.7rem; color:var(--ink-faint); margin-top:.6rem;">TOP 9% · NYC METRO</p>
+      <div class="rank-rows">
+        <div class="rank-row">
+          <span class="rank-label">World Rank</span>
+          <span><span class="rank-value">#759<span class="rank-total">&nbsp;/&nbsp;8,218</span></span><span class="rank-pct">TOP 9%</span></span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-label">Country Rank</span>
+          <span><span class="rank-value">#460<span class="rank-total">&nbsp;/&nbsp;5,844</span></span><span class="rank-pct">TOP 8%</span></span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-label">New York State Rank</span>
+          <span><span class="rank-value">#15<span class="rank-total">&nbsp;/&nbsp;264</span></span><span class="rank-pct">TOP 6%</span></span>
+        </div>
+      </div>
+      <p class="livestats-source">via <a href="https://ftsee.app/28021" target="_blank" rel="noopener noreferrer">FTSee</a></p>
     </div>
     <div class="about-copy">
       <p>The Steel Titans are an FTC team from <strong>Claremont International High School</strong> in the Bronx, NY, founded in September 2024. Now in our second year, we conduct most of our work at the NYC FIRST STEM Center at the Andrew Freedman House.</p>
@@ -746,7 +792,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </section>
 
 <!-- Awards -->
-<section id="awards" class="panel-alt reveal">
+<section id="awards" class="container reveal">
   <div class="container">
     <p class="eyebrow">2025–2026 Season</p>
     <h2><i class="fas fa-award"></i>Awards &amp; Achievements</h2>
@@ -776,7 +822,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </section>
 
 <!-- Subteams -->
-<section id="team" class="container reveal">
+<section id="team" class="panel-alt reveal">
+  <div class="container">
   <p class="eyebrow">How We're Built</p>
   <h2><i class="fas fa-user-friends"></i>Subteams</h2>
   <div class="team-grid">
@@ -801,15 +848,16 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
       <div class="team-info"><h3>Outreach Team</h3><p>Community Engagement</p></div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- Team Members -->
-<section id="members" class="panel-alt reveal">
+<section id="members" class="container reveal">
   <div class="container">
     <p class="eyebrow">The Roster</p>
     <h2><i class="fas fa-users"></i>Team Members</h2>
     <div class="members-grid">
-      <div class="member-card tframe"><img src="abid2.png" alt="Abid Ahmed"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical &amp; Electrical</p>><span class="captain-flag">Team Captain</span></div></div>
+      <div class="member-card tframe"><img src="abid2.png" alt="Abid Ahmed"><div class="member-info"><h3>Abid Ahmed</h3><p>Mechanical &amp; Electrical</p><span class="captain-flag">Team Captain</span></div></div>
         <div class="member-card tframe"><img src="Islam.png" alt="MD Islam"><div class="member-info"><h3>MD Islam</h3><p>Programming &amp; Outreach</p></div></div>
       <div class="member-card tframe"><img src="ariel.png" alt="Ariel Ubri"><div class="member-info"><h3>Ariel Ubri</h3><p>Design Team</p></div></div>
       <div class="member-card tframe"><img src="tamim2.png" alt="Tamim Anzar"><div class="member-info"><h3>Tamim Anzar</h3><p>Programming Team</p></div></div>
@@ -826,7 +874,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </section>
 
 <!-- Mentors & Coaches -->
-<section id="mentors" class="container reveal">
+<section id="mentors" class="panel-alt reveal">
+  <div class="container">
   <p class="eyebrow">Behind The Build</p>
   <h2><i class="fas fa-chalkboard-teacher"></i>Mentors &amp; Coaches</h2>
   <div class="mentors-grid">
@@ -851,10 +900,11 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
       <div class="mentor-info"><h3>Jessy Devonou</h3><p>Mentor / Alumnus</p></div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- STEM Connections -->
-<section id="stem-connections" class="panel-alt reveal">
+<section id="stem-connections" class="container reveal">
   <div class="container">
     <p class="eyebrow">Outreach</p>
     <h2><i class="fas fa-globe"></i>STEM Connections</h2>
@@ -900,7 +950,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </section>
 
 <!-- Partnerships -->
-<section id="partnerships" class="container reveal">
+<section id="partnerships" class="panel-alt reveal">
+  <div class="container">
   <p class="eyebrow">Backing Our Build</p>
   <h2><i class="fas fa-handshake"></i>Partnerships &amp; Sponsorships</h2>
   <div class="partnerships-grid">
@@ -932,10 +983,11 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- Mentorship & Support -->
-<section id="mentorship" class="panel-alt reveal">
+<section id="mentorship" class="container reveal">
   <div class="container">
     <p class="eyebrow">Where We Build</p>
     <h2><i class="fas fa-chalkboard-teacher"></i>Mentorship &amp; Support</h2>
@@ -959,7 +1011,8 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 </section>
 
 <!-- Collaboration -->
-<section id="collaboration" class="container reveal">
+<section id="collaboration" class="panel-alt reveal">
+  <div class="container">
   <p class="eyebrow">Peer Network</p>
   <h2><img src="ftc-logo.png" alt="FTC Logo" style="height:100px; margin:0 auto 1rem;">Collaborating with FTC Teams</h2>
   <div class="stem-grid">
@@ -1017,6 +1070,7 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
       <span class="role">FTC #32583</span>
       <p>Supported Fruity Pebbles by sharing materials and helping them with robot assembly and construction guidance. This helped them continue building and improving their robot.</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1372,12 +1426,16 @@ document.addEventListener('mousemove', (e) => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 
-  ring.style.left = e.clientX + 'px';
-  ring.style.top = e.clientY + 'px';
+  if (ring){
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }
 });
 </script>
    <script>
 document.querySelectorAll('a, button, .gallery-item').forEach(el => {
+  const ring = document.querySelector('.cursor-ring');
+  if (!ring) return;
 
   el.addEventListener('mouseenter', () => {
     ring.style.width = '50px';
