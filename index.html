@@ -778,25 +778,25 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
   <h2><i class="fas fa-info-circle"></i>About Steel Titans</h2>
   <div class="about-grid">
     <div class="stat-block">
-      <span class="tag">Live Standing · Powered by FTSee</span>
-      <div class="stat-num">92<span>&nbsp;npOPR</span></div>
-      <div class="stat-label">Season Performance Rating</div>
+      <span class="tag" id="ls-tag">Live Standing · Powered by FTSee</span>
+      <div class="stat-num"><b id="ls-np" style="font:inherit">92</b><span>&nbsp;npOPR</span></div>
+      <div class="stat-label" id="ls-label">Season Performance Rating · 2025–26</div>
       <div class="gauge"><div class="gauge-fill" data-fill="91"></div></div>
       <div class="rank-rows">
-        <div class="rank-row">
+        <div class="rank-row" id="ls-world">
           <span class="rank-label">World Rank</span>
           <span><span class="rank-value">#759<span class="rank-total">&nbsp;/&nbsp;8,218</span></span><span class="rank-pct">TOP 9%</span></span>
         </div>
-        <div class="rank-row">
+        <div class="rank-row" id="ls-country">
           <span class="rank-label">Country Rank</span>
           <span><span class="rank-value">#460<span class="rank-total">&nbsp;/&nbsp;5,844</span></span><span class="rank-pct">TOP 8%</span></span>
         </div>
-        <div class="rank-row">
+        <div class="rank-row" id="ls-state">
           <span class="rank-label">New York State Rank</span>
           <span><span class="rank-value">#15<span class="rank-total">&nbsp;/&nbsp;264</span></span><span class="rank-pct">TOP 6%</span></span>
         </div>
       </div>
-      <p class="livestats-source">via <a href="https://ftsee.app/28021" target="_blank" rel="noopener noreferrer">FTSee</a></p>
+      <p class="livestats-source" id="ls-src">via <a href="https://ftsee.app/28021" target="_blank" rel="noopener noreferrer">FTSee</a></p>
     </div>
     <div class="about-copy">
       <p>The Steel Titans are an FTC team from <strong>Claremont International High School</strong> in the Bronx, NY, founded in September 2024. Now in our second year, we conduct most of our work at the NYC FIRST STEM Center at the Andrew Freedman House.</p>
@@ -1098,10 +1098,10 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
       <p>Kenny Donuts has supported us with troubleshooting, programming help, and technical guidance. We also collaborate by sharing materials, resources, and build ideas to strengthen both teams.</p>
     </div>
     <div class="stem-card tframe">
-      <img src="Chopped Cheese In Space .jpg" alt="Chopped Cheese In Space ">
-      <h3>Chopped Cheese In Space </h3>
+      <img src="heights techies.jpeg" alt="South Bronx Team">
+      <h3>South Bronx Team</h3>
       <span class="role">FTC #11997</span>
-      <p>The Chopped Cheese In Space Team has played a strong mentorship role. They helped us with robot building techniques and technical problem-solving, guiding us through mechanical and design challenges.</p>
+      <p>The South Bronx Team has played a strong mentorship role. They helped us with robot building techniques and technical problem-solving, guiding us through mechanical and design challenges.</p>
     </div>
     <div class="stem-card tframe">
       <img src="sith seturn.jpeg" alt="SITH Saturn">
@@ -1243,6 +1243,12 @@ footer p{color:var(--ink-faint); font-size:.85rem;}
 <!-- Footer -->
 <footer>
   <p class="tagline">Forged in the Bronx</p>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/steel_titans_28021/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </div>
   <p>&copy; Steel Titans FTC Team 28021</p>
 </footer>
 
@@ -1516,6 +1522,84 @@ document.querySelectorAll('a, button, .gallery-item').forEach(el => {
   });
 
 });
+</script>
+
+<script>
+/* Live stats from FTCScout (public API). If anything fails, the numbers
+   already written in the HTML above stay on screen (nothing breaks). */
+(function(){
+  var TEAM = 28021, REGION = 'USNY';
+  var nf = function(n){ return Number(n).toLocaleString('en-US'); };
+  var API = 'https://api.ftcscout.org/graphql';
+  // Try the API directly first; if the browser/network blocks that, retry
+  // through a public relay so the page still gets the numbers.
+  var ROUTES = [
+    function(u){ return u; },
+    function(u){ return 'https://corsproxy.io/?url=' + encodeURIComponent(u); },
+    function(u){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); }
+  ];
+  function gql(query){
+    var url = API + '?query=' + encodeURIComponent(query);
+    var i = 0;
+    function attempt(){
+      return fetch(ROUTES[i](url)).then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).catch(function(err){
+        i++;
+        if(i >= ROUTES.length) throw err;
+        return attempt();
+      });
+    }
+    return attempt();
+  }
+  function setRank(id, rank, total){
+    var row = document.getElementById(id); if(!row || !rank || !total) return;
+    var pct = Math.max(1, Math.round(rank/total*100));
+    row.querySelector('.rank-value').innerHTML = '#' + nf(rank) + '<span class="rank-total">&nbsp;/&nbsp;' + nf(total) + '</span>';
+    row.querySelector('.rank-pct').textContent = 'TOP ' + pct + '%';
+  }
+  function load(season){
+    return gql('{ teamByNumber(number:'+TEAM+'){ quickStats(season:'+season+'){ tot{value rank} count } } }')
+      .then(function(j){
+        var q = j && j.data && j.data.teamByNumber && j.data.teamByNumber.quickStats;
+        if(!q || !q.tot || q.tot.value == null) return null;
+        return {season:season, q:q};
+      });
+  }
+  var now = new Date();
+  var year = now.getMonth() >= 8 ? now.getFullYear() : now.getFullYear() - 1; // FTC seasons start in September
+  var seasonName = year + '\u2013' + String(year+1).slice(2);
+  load(year).then(function(r){
+    if(!r){
+      // New season, no matches played yet: don't show last season's numbers as current
+      document.getElementById('ls-np').textContent = '\u2014';
+      document.getElementById('ls-label').textContent = seasonName + ' season \u00b7 stats appear after our first event';
+      ['ls-world','ls-country','ls-state'].forEach(function(id){ var e=document.getElementById(id); if(e) e.style.display='none'; });
+      var g0 = document.querySelector('.gauge-fill'); if(g0) g0.dataset.fill = 0;
+      document.getElementById('ls-tag').textContent = 'Live Standing \u00b7 Powered by FTCScout';
+      document.getElementById('ls-src').innerHTML = 'via <a href="https://ftcscout.org/teams/'+TEAM+'" target="_blank" rel="noopener noreferrer">FTCScout</a>';
+      return;
+    }
+    var q = r.q;
+    document.getElementById('ls-np').textContent = Math.round(q.tot.value);
+    document.getElementById('ls-label').textContent = 'Season Performance Rating · ' + r.season + '–' + String(r.season+1).slice(2);
+    setRank('ls-world', q.tot.rank, q.count);
+    var pct = Math.max(1, Math.round(q.tot.rank/q.count*100));
+    var g = document.querySelector('.gauge-fill'); if(g) g.dataset.fill = Math.max(2, 100 - pct);
+    var c = document.getElementById('ls-country'); if(c) c.style.display = 'none';
+    document.getElementById('ls-tag').textContent = 'Live Standing · Powered by FTCScout';
+    document.getElementById('ls-src').innerHTML = 'via <a href="https://ftcscout.org/teams/'+TEAM+'" target="_blank" rel="noopener noreferrer">FTCScout</a>';
+    // New York state rank: rank our team among all NY teams by the same rating
+    return gql('{ teamsSearch(region:'+REGION+', limit:500){ number quickStats(season:'+r.season+'){ tot{value} } } }').then(function(j){
+      var list = (j && j.data && j.data.teamsSearch) || [];
+      var vals = list.map(function(t){ return t.quickStats && t.quickStats.tot ? t.quickStats.tot.value : null; }).filter(function(v){ return v != null; });
+      if(vals.length < 2) throw new Error('no NY data');
+      var rank = vals.filter(function(v){ return v > q.tot.value; }).length + 1;
+      setRank('ls-state', rank, vals.length);
+    }).catch(function(){ var st = document.getElementById('ls-state'); if(st) st.style.display = 'none'; });
+  }).catch(function(e){ console.warn('Live stats unavailable, showing saved numbers', e); });
+})();
 </script>
 </body>
 </html>
